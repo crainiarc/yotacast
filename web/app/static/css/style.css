@@ -4,6 +4,14 @@
   width: 800px;
 }
 
+.hidden-canvas {
+  display: none;
+}
+
+.hidden-photo {
+  display: none;
+}
+
 .modal-dialog {
   width: 1024px !important;
 }

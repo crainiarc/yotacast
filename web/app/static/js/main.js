@@ -3,20 +3,23 @@ angular.module('CameraApp', []).config(function ($interpolateProvider) {
 });
 
 function CameraController ($scope, $http) {
+  var streaming = false,
+  video = document.querySelector('.video-container'),
+  canvas = document.querySelector('.hidden-canvas'),
+  photo = document.querySelector('.hidden-photo'),
+  width = 970,
+  height = 0;
+
   $('#slider').slider({
     max: 50
   });
 
   // Set up the camera
   (function() {
-    video = document.querySelector('.video-container');
-    canvas = document.querySelector('.hidden-canvas');
-    photo = document.querySelector('.hidden-photo');
-    width = 970;
-    
     navigator.getMedia = (navigator.getUserMedia || navigator.webkitGetUserMedia ||
       navigator.mozGetUserMedia || navigator.msGetUserMedia);
 
+    // Link the video tag to the WebCam User Media Stream
     navigator.getMedia({video: true}, function(stream) {
       if (navigator.mozGetUserMedia) {
         video.mozSrcObject = stream;
@@ -27,16 +30,17 @@ function CameraController ($scope, $http) {
       video.play();
     }, function (err) { console.log('An error occured: ' + err) });
 
-    // video.addEventListener('canplay', function(ev){
-    //   if (!streaming) {
-    //     height = video.videoHeight / (video.videoWidth/width);
-    //     video.setAttribute('width', width);
-    //     video.setAttribute('height', height);
-    //     canvas.setAttribute('width', width);
-    //     canvas.setAttribute('height', height);
-    //     streaming = true;
-    //   }
-    // }, false);
+    // Set height variables for canvas
+    video.addEventListener('canplay', function(ev){
+      if (!streaming) {
+        height = video.videoHeight / (video.videoWidth/width);
+        video.setAttribute('width', width);
+        video.setAttribute('height', height);
+        canvas.setAttribute('width', width);
+        canvas.setAttribute('height', height);
+        streaming = true;
+      }
+    }, false);
   })();
 
   $scope.uploadImage = function () {
@@ -48,4 +52,13 @@ function CameraController ($scope, $http) {
       alert('Post failed');
     });
   };
+
+  // Captures an image from the video stream and put it in the image element
+  function takePicture() {
+    canvas.width = width;
+    canvas.height = height;
+    canvas.getContext('2d').drawImage(video, 0, 0, width, height);
+    var data = canvas.toDataURL('image/png');
+    photo.setAttribute('src', data);
+  }
 }
