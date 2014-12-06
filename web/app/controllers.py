@@ -5,8 +5,19 @@ from flask import Flask, render_template, request, make_response
 from app import app
 import time
 import datetime
-import cv2.cv as cv
-import cv2 as cv2
+
+def module_exists(module_name):
+    try:
+        __import__(module_name)
+    except ImportError:
+        return False
+    else:
+        return True
+
+if module_exists('cv2'):
+    import cv2.cv as cv
+    import cv2 as cv2
+
 import base64
 
 UPLOAD_FOLDER = 'app/static/snapshots/'
@@ -39,27 +50,35 @@ def upload_file():
         with open(raw_image_filepath, 'wb') as f:
             f.write(imgdata)
 
-        # Save grayscale iamge as <timestamp>-grayscale.jpg
-        image = cv2.imread(raw_image_filepath, cv2.CV_LOAD_IMAGE_GRAYSCALE)
-        grayscale_image_filename = str(no_microseconds_time) + '-grayscale.jpg'
-        grayscale_image_filepath = os.path.join(app.config['UPLOAD_FOLDER'], grayscale_image_filename)
-        cv2.imwrite(grayscale_image_filepath, image)
+        if cv2:
+            # Save grayscale iamge as <timestamp>-grayscale.jpg
+            image = cv2.imread(raw_image_filepath, cv2.CV_LOAD_IMAGE_GRAYSCALE)
+            grayscale_image_filename = str(no_microseconds_time) + '-grayscale.jpg'
+            grayscale_image_filepath = os.path.join(app.config['UPLOAD_FOLDER'], grayscale_image_filename)
+            cv2.imwrite(grayscale_image_filepath, image)
 
-        # Save equalized iamge as <timestamp>-equalized.jpg
-        eq = cv2.equalizeHist(image)
-        equalized_image_filename = str(no_microseconds_time) + '-equalized.jpg'
-        equalized_image_filepath = os.path.join(app.config['UPLOAD_FOLDER'], equalized_image_filename)
-        cv2.imwrite(equalized_image_filepath, eq)
+            # Save equalized iamge as <timestamp>-equalized.jpg
+            eq = cv2.equalizeHist(image)
+            equalized_image_filename = str(no_microseconds_time) + '-equalized.jpg'
+            equalized_image_filepath = os.path.join(app.config['UPLOAD_FOLDER'], equalized_image_filename)
+            cv2.imwrite(equalized_image_filepath, eq)
 
-        # Save latest.json
-        with open(os.path.join(app.config['UPLOAD_FOLDER'], 'latest.json'), 'w+') as f:
-            f.write(json.dumps({
-                'raw_string': base64_string,
-                'raw_image': raw_image_filename,
-                'grayscale_image': grayscale_image_filename,
-                'equalized_image': equalized_image_filename
-            }))
-            f.close()
+            # Save latest.json
+            with open(os.path.join(app.config['UPLOAD_FOLDER'], 'latest.json'), 'w+') as f:
+                f.write(json.dumps({
+                    'raw_string': base64_string,
+                    'raw_image': raw_image_filename,
+                    'grayscale_image': grayscale_image_filename,
+                    'equalized_image': equalized_image_filename
+                }))
+        else:
+            with open(os.path.join(app.config['UPLOAD_FOLDER'], 'latest.json'), 'w+') as f:
+                f.write(json.dumps({
+                    'raw_string': base64_string,
+                    'raw_image': raw_image_filename
+                }))
+                f.close()
+
         return json.dumps({'status':'success'})
 
 @app.route('/latest_image', methods=['GET'])        
