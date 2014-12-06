@@ -53,6 +53,7 @@ function CameraController ($scope, $http) {
     });
   };
 
+
   // Captures an image from the video stream and put it in the image element
   function takePicture() {
     canvas.width = width;
@@ -61,4 +62,14 @@ function CameraController ($scope, $http) {
     var data = canvas.toDataURL('image/png');
     photo.setAttribute('src', data);
   }
+
+  $scope.getImage = function () {
+    $http.get('/latest_image').success(function (res, status, headers, config) {
+      if (res.status === 'success') {
+        $scope.imgString = 'data:image/png;base64,' + $.trim(res.image);
+      }
+    }).error(function (res, status, headers, config) {
+      alert('Image retrieval failed');
+    });
+  };
 }
