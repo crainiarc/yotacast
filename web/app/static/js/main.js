@@ -66,9 +66,8 @@ function CameraController ($scope, $http, $interval) {
     });
   };
 
-  function pollPicture() {
-    var data = takePicture();
-    $scope.uploadImage(data);
+  function pollPicture() { 
+    $scope.uploadImage(takePicture());
   }
 
   // Captures an image from the video stream and put it in the image element
@@ -78,6 +77,7 @@ function CameraController ($scope, $http, $interval) {
     canvas.getContext('2d').drawImage(video, 0, 0, width, height);
     var data = canvas.toDataURL('image/jpeg');
     data = data.replace(/^data:image\/(png|jpeg);base64,/, "");
+    return data;
   }
 
   $scope.getImage = function () {

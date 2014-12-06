@@ -37,7 +37,7 @@ def upload_file():
 
         with open(os.path.join(app.config['UPLOAD_FOLDER'], 'latest.json'), 'w+') as f:
             f.write(json.dumps({
-                'raw_string': base64_string
+                'raw_string': base64_string,
                 'raw_image': raw_image_filename
             }))
             f.close()
