@@ -28,6 +28,5 @@ def upload_file():
 
         image = data["image"]
 
-        file.save(os.path.join(app.config['UPLOAD_FOLDER'], image))
+        image.save(os.path.join(app.config['UPLOAD_FOLDER'],"latest"))
 
-        
