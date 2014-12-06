@@ -1,7 +1,7 @@
 angular.module('CameraApp', []).config(function ($interpolateProvider) {
   $interpolateProvider.startSymbol('[[').endSymbol(']]');
 });
-
+var test;
 function CameraController ($scope, $http) {
   var streaming = false,
   video = document.querySelector('.video-container'),
@@ -58,7 +58,16 @@ function CameraController ($scope, $http) {
     canvas.width = width;
     canvas.height = height;
     canvas.getContext('2d').drawImage(video, 0, 0, width, height);
-    var data = canvas.toDataURL('image/png');
+    var data = canvas.toDataURL('image/jpeg');
+    console.log(data);
+    data = data.replace(/^data:image\/(png|jpeg);base64,/, "");
+    console.log(data);
+    test = data;
     photo.setAttribute('src', data);
   }
+
+      startbutton.addEventListener('click', function(ev){
+        takePicture();
+      ev.preventDefault();
+    }, false);
 }
