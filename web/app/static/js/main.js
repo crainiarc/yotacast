@@ -12,11 +12,11 @@ function CameraController ($scope, $http, $interval) {
   var height = 0;
 
   $scope.isSending = false;
-  $scope.timeoutInterval = 5;
+  $scope.timeoutInterval = 1;
 
   $('#slider').slider({
-    min: $scope.timeoutInterval,
-    max: 300,
+    min: 1,
+    max: 60,
 
     change: function(event, ui) {
       if ($scope.isSending) {
