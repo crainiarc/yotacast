@@ -1,7 +1,15 @@
 .video-container {
-  background-color: #ccc;
+  background-color: #000;
   height: 450px;
   width: 800px;
+}
+
+.hidden-canvas {
+  display: none;
+}
+
+.hidden-photo {
+  display: none;
 }
 
 .tab-pane {
@@ -14,4 +22,26 @@ body {
 
 .update-interval {
   font-size: 32px;
+}
+
+.snapshots-gallery {
+
+}
+
+.snapshots-gallery li {
+  display: inline-block;
+  list-style: none;
+  margin: 10px;
+}
+
+.snapshots-gallery li img {
+  width: 100px;
+}
+
+.snapshots-gallery li.movement {
+  outline: 3px solid red;
+}
+
+.main-section {
+  min-height: 500px;
 }

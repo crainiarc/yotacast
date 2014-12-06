@@ -43,9 +43,9 @@
                         <!-- Tab panes -->
                         <div class="tab-content">
                             <div role="tabpanel" class="tab-pane active" id="camera">
-                                <div class="panel panel-default">
+                                <div class="panel panel-default main-section">
                                     <div class="panel-heading">
-                                        <h3 class="panel-title">Planes</h3>
+                                        <h3 class="panel-title">Camera</h3>
                                     </div>
                                     <div class="panel-body">
                                         <div class="row">
@@ -77,12 +77,11 @@
                                                             </div>
                                                             <div id="slider"></div>
                                                         </div>
-                                                        <button class="btn btn-default" ng-click="togglePolling()"><span>[[ {'true': 'Start', 'false': 'Stop'}[!isSending] ]]</span> Sending</button>
+                                                        <button class="btn [[ {'true': 'btn-success', 'false': 'btn-danger'}[!isCasting] ]]" ng-click="togglePolling()"><span>[[ {'true': 'Start', 'false': 'Stop'}[!isCasting] ]]</span> Casting</button>
                                                         <button class="btn btn-default" ng-click="sendImage()">Send Current Image</button>
                                                         <button class="btn btn-default" ng-click="getImage()">Get Image</button>
                                                         <button class="btn btn-default" ng-click="activateAlert()">Activate alert</button>
                                                         <button class="btn btn-default" ng-click="stopAlert()">Stop alert</button>
-                                                        <img ng-src="[[imgString]]">
                                                     </div>
                                                 </div>
                                             </div>
@@ -91,19 +90,18 @@
                                 </div>
                             </div>
                             <div role="tabpanel" class="tab-pane" id="gallery">
-                                <div class="panel panel-default">
+                                <div class="panel panel-default main-section">
                                     <div class="panel-heading">
-                                        <h3 class="panel-title">Snapshots Gallery</h3>
+                                        <h3 class="panel-title">Snapshots Gallery <button class="pull-right btn [[ {'true': 'btn-success', 'false': 'btn-danger'}[!isCasting] ]] btn-xs" ng-click="togglePolling()"><span>[[ {'true': 'Start', 'false': 'Stop'}[!isCasting] ]]</span> Casting</button></h3>
                                     </div>
                                     <div class="panel-body">
                                         <div class="row">
-                                            <div class="col-md-9">
-                                                <canvas id="map-container"></canvas>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="panel panel-default">
-                                                    
-                                                </div>
+                                            <div class="col-md-12">
+                                                <ul class="snapshots-gallery">
+                                                    <li ng-repeat="snapshot in snapshots" class="[[ {'true': 'movement'}[snapshot.movement] ]]">
+                                                        <img ng-src="/static/snapshots/[[snapshot.equalized_image]]">
+                                                    </li>
+                                                </ul>
                                             </div>
                                         </div>
                                     </div>

@@ -23,7 +23,7 @@ if has_cv2:
 import base64
 
 UPLOAD_FOLDER = 'app/static/snapshots/'
-MOVEMENT_THRESHOLD = 3
+MOVEMENT_THRESHOLD = 7
 
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 

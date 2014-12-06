@@ -16,15 +16,18 @@ function CameraController ($scope, $http, $interval) {
   var photo = document.querySelector('.hidden-photo');
   var width = 970;
   var height = 0;
+  
   var modes = {
     burglar: 'alarm',
     lullaby: 'lullaby',
-  }
+  };
   $scope.mode = 'burglar'; // Either 'burglar' or 'lullaby'
   var audio = new Audio('/static/sound/alarm.mp3');
   audio.loop = true;
 
-  $scope.isSending = false;
+  $scope.snapshots = [];
+
+  $scope.isCasting = false;
   $scope.timeoutInterval = 1;
 
   $('#slider').slider({
@@ -32,7 +35,7 @@ function CameraController ($scope, $http, $interval) {
     max: 60,
 
     change: function(event, ui) {
-      if ($scope.isSending) {
+      if ($scope.isCasting) {
         $scope.togglePolling();
         $scope.togglePolling();
       }
@@ -79,12 +82,12 @@ function CameraController ($scope, $http, $interval) {
 
   // Toggles between the option of polling and not polling
   $scope.togglePolling = function () {
-    if (!$scope.isSending) {
+    if (!$scope.isCasting) {
       timeoutPromise = $interval(pollPicture, $scope.timeoutInterval * 1000);
     } else {
       $interval.cancel(timeoutPromise);
     }
-    $scope.isSending = !$scope.isSending;
+    $scope.isCasting = !$scope.isCasting;
   };
 
   $scope.uploadImage = function (data) {
@@ -138,11 +141,13 @@ function CameraController ($scope, $http, $interval) {
 
   function getProcessedImage () {
     $http.get('/latest_image').success(function(data, status, headers, config) {
+      $scope.snapshots.unshift(data);
       if (data.play_alert) {
         audio.play();
       } else {
         audio.pause();
       }
+      $scope.$apply();
     }).error(function(data, status, headers, config) {
       alert('Post failed');
     });
