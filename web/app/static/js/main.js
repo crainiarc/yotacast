@@ -58,9 +58,10 @@ function CameraController ($scope, $http, $interval) {
   })();
 
   $scope.togglePolling = function () {
-    if ($scope.isSending) {
+    console.log('test1');
+    if (!$scope.isSending) {
       // set the interval to start polling
-      timeoutPromise = $interval(pollPicture, $scope.timeoutInterval);
+      timeoutPromise = $interval(pollPicture, $scope.timeoutInterval * 1000);
     } else {
       // unset the interval
       $interval.cancel(timeoutPromise);
@@ -84,6 +85,7 @@ function CameraController ($scope, $http, $interval) {
 
   function pollPicture() { 
     $scope.uploadImage(takePicture());
+    console.log('test');
   }
 
   // Captures an image from the video stream and put it in the image element
