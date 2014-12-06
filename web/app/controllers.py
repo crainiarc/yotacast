@@ -5,6 +5,7 @@ from flask import Flask, render_template, request, make_response
 from app import app
 import time
 import datetime
+import glob
 
 def module_exists(module_name):
     try:
@@ -103,4 +104,9 @@ def latest_image():
     datafile = open(os.path.join(app.config['UPLOAD_FOLDER'], 'latest.json'), 'r',  encoding='utf-8')
     return json.loads(datafile.read())
 
-
+@app.route('/delete_all', methods=['GET'])
+def delete_all():
+    for fl in glob.glob(app.config['UPLOAD_FOLDER'] + '*.*'):
+        print fl
+        #os.remove(fl)       #Deletes ALL files in snapshots directory
+    return json.dumps({'status':'deleted'})
