@@ -10,6 +10,8 @@ function CameraController ($scope, $http, $interval) {
   var photo = document.querySelector('.hidden-photo');
   var width = 970;
   var height = 0;
+  var audio = new Audio('/static/sound/alarm.mp3');
+  audio.loop = true;
 
   $scope.isSending = false;
   $scope.timeoutInterval = 1;
@@ -75,7 +77,7 @@ function CameraController ($scope, $http, $interval) {
       image: data
     }).success(function (res, status, headers, config) {
       console.log(res);
-      var data = getProcessedImage();
+      getProcessedImage();
     }).error(function (res, status, headers, config) {
       alert('Post failed');
     });
@@ -83,14 +85,34 @@ function CameraController ($scope, $http, $interval) {
 
   $scope.sendImage = function () {
     pollPicture();
-  }
+  };
 
-  function pollPicture() { 
+  function pollPicture () { 
     $scope.uploadImage(takePicture());
   }
 
+  $scope.activateAlert = function () {
+    $http.post('/play_alert', {
+      play_alert: true
+    }).success(function (res, status, headers, config) {
+      console.log(res);
+    }).error(function (res, status, headers, config) {
+      alert('Post failed');
+    });
+  };
+
+  $scope.stopAlert = function () {
+    $http.post('/play_alert', {
+      play_alert: false
+    }).success(function (res, status, headers, config) {
+      console.log(res);
+    }).error(function (res, status, headers, config) {
+      alert('Post failed');
+    });
+  };
+
   // Captures an image from the video stream and put it in the image element
-  function takePicture() {
+  function takePicture () {
     canvas.width = width;
     canvas.height = height;
     canvas.getContext('2d').drawImage(video, 0, 0, width, height);
@@ -99,9 +121,13 @@ function CameraController ($scope, $http, $interval) {
     return data;
   }
 
-  function getProcessedImage() {
+  function getProcessedImage () {
     $http.get('/latest_image').success(function(data, status, headers, config) {
-      console.log(data);
+      if (data.play_alert) {
+        audio.play();
+      } else {
+        audio.pause();
+      }
     }).error(function(data, status, headers, config) {
       alert('Post failed');
     });

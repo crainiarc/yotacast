@@ -23,10 +23,12 @@ if has_cv2:
 import base64
 
 UPLOAD_FOLDER = 'app/static/snapshots/'
+MOVEMENT_THRESHOLD = 3
 
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 previous_grayscale_img = None
+play_alert_sound = False
 
 @app.route('/')
 def index():
@@ -69,7 +71,7 @@ def upload_file():
                 height = diff_img.shape[1]
                 total_pixels = width * height
                 average_diff = float(total_diff) / total_pixels
-                if average_diff > 3:
+                if average_diff > MOVEMENT_THRESHOLD:
                     movement = True
             previous_grayscale_img = grayscale_image
 
@@ -87,13 +89,15 @@ def upload_file():
                     'raw_image': raw_image_filename,
                     'grayscale_image': grayscale_image_filename,
                     'equalized_image': equalized_image_filename,
-                    'movement': movement
+                    'movement': movement,
+                    'play_alert': play_alert_sound
                 }))
         else:
             with open(os.path.join(app.config['UPLOAD_FOLDER'], 'latest.json'), 'w+') as f:
                 f.write(json.dumps({
                     'raw_string': base64_string,
-                    'raw_image': raw_image_filename
+                    'raw_image': raw_image_filename,
+                    'play_alert': play_alert_sound
                 }))
                 f.close()
         
@@ -101,12 +105,18 @@ def upload_file():
 
 @app.route('/latest_image', methods=['GET'])        
 def latest_image():
-    # datafile = open(os.path.join(app.config['UPLOAD_FOLDER'], 'latest.json'), 'r')
     with open(os.path.join(app.config['UPLOAD_FOLDER'], 'latest.json'), 'r+') as f:
         return f.read()
-        # return 
-        # json.loads(datafile.read())
-    # return json.dumps({'status':'lolol'})
+
+@app.route('/play_alert', methods=['POST'])        
+def play_alert():
+    data = json.loads(request.data)
+    global play_alert_sound
+    play_alert_sound = data['play_alert']
+    return json.dumps({
+        'status':'success',
+        'play_alert': play_alert_sound
+    })
 
 @app.route('/delete_all', methods=['GET'])
 def delete_all():
