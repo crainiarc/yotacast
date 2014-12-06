@@ -10,6 +10,7 @@ function CameraController ($scope, $http, $interval) {
   photo = document.querySelector('.hidden-photo'),
   width = 970,
   height = 0;
+  $scope.isSending = false;
 
   $scope.timeoutInterval = 5;
   $('#slider').slider({
@@ -57,13 +58,14 @@ function CameraController ($scope, $http, $interval) {
   })();
 
   $scope.togglePolling = function () {
-    if (!timeoutPromise) {
+    if ($scope.isSending) {
       // set the interval to start polling
       timeoutPromise = $interval(pollPicture, $scope.timeoutInterval);
     } else {
       // unset the interval
       $interval.cancel(timeoutPromise);
     }
+    $scope.isSending = !$scope.isSending;
   };
 
   $scope.uploadImage = function (data) {
@@ -75,6 +77,10 @@ function CameraController ($scope, $http, $interval) {
       alert('Post failed');
     });
   };
+
+  $scope.sendImage = function () {
+    pollPicture();
+  }
 
   function pollPicture() { 
     $scope.uploadImage(takePicture());
