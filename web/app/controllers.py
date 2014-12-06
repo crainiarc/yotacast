@@ -120,7 +120,7 @@ def play_alert():
 
 @app.route('/delete_all', methods=['GET'])
 def delete_all():
+    # Deletes ALL files in snapshots directory
     for fl in glob.glob(app.config['UPLOAD_FOLDER'] + '*.*'):
-        print fl
-        #os.remove(fl)       #Deletes ALL files in snapshots directory
+        os.remove(fl)       
     return json.dumps({'status':'deleted'})
