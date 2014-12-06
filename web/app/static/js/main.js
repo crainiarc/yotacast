@@ -11,9 +11,20 @@ function CameraController ($scope, $http, $interval) {
   width = 970,
   height = 0;
 
+  $scope.timeoutInterval = 5;
   $('#slider').slider({
-    min: 5,
+    min: $scope.timeoutInterval,
     max: 300,
+    change: function(event, ui) {
+      $scope.$apply(function () {$scope.timeoutInterval = ui.value;});
+      if (timeoutPromise) {
+        $interval.cancel(timeoutPromise);
+        timeoutPromise = $interval(pollPicture, $scope.timeoutInterval);
+      }
+    },
+    slide: function(event, ui) {
+      $scope.$apply(function () {$scope.timeoutInterval = ui.value;});
+    }
   });
 
   // Set up the camera
@@ -48,8 +59,7 @@ function CameraController ($scope, $http, $interval) {
   $scope.togglePolling = function () {
     if (!timeoutPromise) {
       // set the interval to start polling
-      timeoutInterval = $('#slider').slider('value') * 1000;
-      timeoutPromise = $interval(pollPicture, timeoutInterval);
+      timeoutPromise = $interval(pollPicture, $scope.timeoutInterval);
     } else {
       // unset the interval
       $interval.cancel(timeoutPromise);
