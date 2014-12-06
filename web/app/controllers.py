@@ -25,6 +25,7 @@ UPLOAD_FOLDER = 'app/static/snapshots/'
 
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
+previous_grayscale_img = None
 
 @app.route('/')
 def index():
@@ -52,15 +53,28 @@ def upload_file():
             f.write(imgdata)
 
         if has_cv2:
-            # Save grayscale iamge as <timestamp>-grayscale.jpg
-            image = cv2.imread(raw_image_filepath, cv2.CV_LOAD_IMAGE_GRAYSCALE)
+            # Save grayscale image as <timestamp>-grayscale.jpg
+            grayscale_image = cv2.imread(raw_image_filepath, cv2.CV_LOAD_IMAGE_GRAYSCALE)
             grayscale_image_filename = str(no_microseconds_time) + '-grayscale.jpg'
             grayscale_image_filepath = os.path.join(app.config['UPLOAD_FOLDER'], grayscale_image_filename)
-            cv2.imwrite(grayscale_image_filepath, image)
+            cv2.imwrite(grayscale_image_filepath, grayscale_image)
 
-            # Save equalized iamge as <timestamp>-equalized.jpg
+            global previous_grayscale_img
+            movement = False
+            if previous_grayscale_img is not None:
+                diff_img = cv2.absdiff(previous_grayscale_img, grayscale_image)
+                total_diff = sum([sum(row) for row in diff_img])
+                width = diff_img.shape[0]
+                height = diff_img.shape[1]
+                total_pixels = width * height
+                average_diff = float(total_diff) / total_pixels
+                if average_diff > 3:
+                    movement = True
+            previous_grayscale_img = grayscale_image
+
+            # Save equalized image as <timestamp>-equalized.jpg
             clahe = cv2.createCLAHE(clipLimit=2.0, tileGridSize=(8,8))
-            eq = clahe.apply(image)
+            eq = clahe.apply(grayscale_image)
             equalized_image_filename = str(no_microseconds_time) + '-equalized.jpg'
             equalized_image_filepath = os.path.join(app.config['UPLOAD_FOLDER'], equalized_image_filename)
             cv2.imwrite(equalized_image_filepath, eq)
@@ -71,7 +85,8 @@ def upload_file():
                     'raw_string': base64_string,
                     'raw_image': raw_image_filename,
                     'grayscale_image': grayscale_image_filename,
-                    'equalized_image': equalized_image_filename
+                    'equalized_image': equalized_image_filename,
+                    'movement': movement
                 }))
         else:
             with open(os.path.join(app.config['UPLOAD_FOLDER'], 'latest.json'), 'w+') as f:
