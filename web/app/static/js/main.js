@@ -1,32 +1,35 @@
 angular.module('CameraApp', []).config(function ($interpolateProvider) {
   $interpolateProvider.startSymbol('[[').endSymbol(']]');
 });
-var test;
-function CameraController ($scope, $http, $interval) {
-  var streaming = false,
-  timeoutPromise = null,
-  video = document.querySelector('.video-container'),
-  canvas = document.querySelector('.hidden-canvas'),
-  photo = document.querySelector('.hidden-photo'),
-  width = 970,
-  height = 0;
-  $scope.isSending = false;
 
+function CameraController ($scope, $http, $interval) {
+  var streaming = false;
+  var timeoutPromise = null;
+  var video = document.querySelector('.video-container');
+  var canvas = document.querySelector('.hidden-canvas');
+  var photo = document.querySelector('.hidden-photo');
+  var width = 970;
+  var height = 0;
+
+  $scope.isSending = false;
   $scope.timeoutInterval = 5;
+
   $('#slider').slider({
     min: $scope.timeoutInterval,
     max: 300,
+
     change: function(event, ui) {
-      $scope.$apply(function () {$scope.timeoutInterval = ui.value;});
       if ($scope.isSending) {
         $scope.togglePolling();
         $scope.togglePolling();
       }
     },
+
     slide: function(event, ui) {
       $scope.$apply(function () {$scope.timeoutInterval = ui.value;});
     }
   });
+
 
   // Set up the camera
   (function() {
@@ -57,12 +60,11 @@ function CameraController ($scope, $http, $interval) {
     }, false);
   })();
 
+  // Toggles between the option of polling and not polling
   $scope.togglePolling = function () {
     if (!$scope.isSending) {
-      // set the interval to start polling
       timeoutPromise = $interval(pollPicture, $scope.timeoutInterval * 1000);
     } else {
-      // unset the interval
       $interval.cancel(timeoutPromise);
     }
     $scope.isSending = !$scope.isSending;
