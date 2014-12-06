@@ -48,8 +48,8 @@ function CameraController ($scope, $http, $interval) {
   $scope.togglePolling = function () {
     if (!timeoutPromise) {
       // set the interval to start polling
-      console.log($('#slider').slider('value') * 1000);
-      timeoutPromise = $interval(pollPicture, 1000);
+      timeoutInterval = $('#slider').slider('value') * 1000;
+      timeoutPromise = $interval(pollPicture, timeoutInterval);
     } else {
       // unset the interval
       $interval.cancel(timeoutPromise);
@@ -80,8 +80,13 @@ function CameraController ($scope, $http, $interval) {
     data = data.replace(/^data:image\/(png|jpeg);base64,/, "");
   }
 
-      startbutton.addEventListener('click', function(ev){
-        takePicture();
-      ev.preventDefault();
-    }, false);
+  $scope.getImage = function () {
+    $http.get('/latest_image').success(function (res, status, headers, config) {
+      if (res.status === 'success') {
+        $scope.imgString = 'data:image/png;base64,' + $.trim(res.image);
+      }
+    }).error(function (res, status, headers, config) {
+      alert('Image retrieval failed');
+    });
+  };
 }
