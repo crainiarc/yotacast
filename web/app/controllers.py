@@ -95,12 +95,12 @@ def upload_file():
                     'raw_image': raw_image_filename
                 }))
                 f.close()
-
+        
         return json.dumps({'status':'success'})
 
 @app.route('/latest_image', methods=['GET'])        
 def latest_image():
-    with open(os.path.join(app.config['UPLOAD_FOLDER'], 'latest.txt'), 'r+') as f:
-        base64_string = f.readline()
-        f.close()
-    return json.dumps({'status':'success', 'image': base64_string})
+    datafile = open(os.path.join(app.config['UPLOAD_FOLDER'], 'latest.json'), 'r',  encoding='utf-8')
+    return json.loads(datafile.read())
+
+
