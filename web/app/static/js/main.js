@@ -1,5 +1,11 @@
 angular.module('CameraApp', []).config(function ($interpolateProvider) {
   $interpolateProvider.startSymbol('[[').endSymbol(']]');
+}).filter('capitalize', function() {
+  return function(input, all) {
+    return (!!input) ? input.replace(/([^\W_]+[^\s-]*) */g, function (txt){
+      return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+    }) : '';
+  };
 });
 
 function CameraController ($scope, $http, $interval) {
@@ -10,6 +16,11 @@ function CameraController ($scope, $http, $interval) {
   var photo = document.querySelector('.hidden-photo');
   var width = 970;
   var height = 0;
+  var modes = {
+    burglar: 'alarm',
+    lullaby: 'lullaby',
+  }
+  $scope.mode = 'burglar'; // Either 'burglar' or 'lullaby'
   var audio = new Audio('/static/sound/alarm.mp3');
   audio.loop = true;
 
@@ -32,9 +43,13 @@ function CameraController ($scope, $http, $interval) {
     }
   });
 
+  $scope.changeMode = function (newMode) {
+    $scope.mode = newMode;
+    audio.src = '/static/sound/' + modes[newMode] + '.mp3';
+  };
 
   // Set up the camera
-  (function() {
+  (function () {
     navigator.getMedia = (navigator.getUserMedia || navigator.webkitGetUserMedia ||
       navigator.mozGetUserMedia || navigator.msGetUserMedia);
 

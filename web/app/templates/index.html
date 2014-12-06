@@ -51,7 +51,8 @@
                                         <div class="row">
                                             <div class="col-md-9">
                                                 <video class="video-container"></video>
-                                                <canvas class="hidden-canvas"></canvas>                                            </div>
+                                                <canvas class="hidden-canvas"></canvas>                                            
+                                            </div>
                                             <div class="col-md-3">
                                                 <div class="panel panel-default">
                                                     <div class="panel-heading">
@@ -59,7 +60,18 @@
                                                     </div>
                                                     <div class="panel-body">
                                                         <div class="form-group">
-                                                            <label class="control-label">Time Interval: <span style="float: right;"><span ng-bind="timeoutInterval"></span> seconds</span></label>
+                                                            <div>
+                                                                <label class="control-label">Mode: [[ mode | capitalize ]]</label>
+                                                            </div>
+                                                            <div class="btn-group" role="group">                        
+                                                                <button type="button" class="btn btn-default" ng-click="changeMode('burglar')">Burglar</button>
+                                                                <button type="button" class="btn btn-default" ng-click="changeMode('lullaby')">Lullaby</button>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="control-label">
+                                                                Update Interval: <span class="update-interval"> [[ timeoutInterval ]]s</span>
+                                                            </label>
                                                             <div class="input-group">
                                                                 
                                                             </div>
