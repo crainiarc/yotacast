@@ -6,7 +6,7 @@ from app import app
 from werkzeug import secure_filename
 
 
-UPLOAD_FOLDER = '/static/snapshots/'
+UPLOAD_FOLDER = 'app/static/snapshots/'
 
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
@@ -27,6 +27,10 @@ def upload_file():
     if data["image"]:
 
         image = data["image"]
+        with open(os.path.join(app.config['UPLOAD_FOLDER'], "latest.txt"), 'w+') as f:
+            f.write(image)
+            f.close()
 
-        image.save(os.path.join(app.config['UPLOAD_FOLDER'],"latest"))
+
+        return json.dumps({'status':'success'})
 

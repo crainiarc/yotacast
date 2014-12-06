@@ -53,6 +53,5 @@ coverage.xml
 docs/_build/
 
 # Generated Assets
-*.mp4
-*.mov
-app/static/img/sliced/
+*.txt
+app/static/snapshots/
