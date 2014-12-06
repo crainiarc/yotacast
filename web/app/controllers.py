@@ -14,7 +14,7 @@ def module_exists(module_name):
     else:
         return True
 
-has_cv2 = module_exists('cv2'):
+has_cv2 = module_exists('cv2')
 if has_cv2:
     import cv2.cv as cv
     import cv2 as cv2
