@@ -14,7 +14,8 @@ def module_exists(module_name):
     else:
         return True
 
-if module_exists('cv2'):
+has_cv2 = module_exists('cv2'):
+if has_cv2:
     import cv2.cv as cv
     import cv2 as cv2
 
@@ -50,7 +51,7 @@ def upload_file():
         with open(raw_image_filepath, 'wb') as f:
             f.write(imgdata)
 
-        if cv2:
+        if has_cv2:
             # Save grayscale iamge as <timestamp>-grayscale.jpg
             image = cv2.imread(raw_image_filepath, cv2.CV_LOAD_IMAGE_GRAYSCALE)
             grayscale_image_filename = str(no_microseconds_time) + '-grayscale.jpg'
