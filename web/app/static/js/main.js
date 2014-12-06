@@ -75,6 +75,7 @@ function CameraController ($scope, $http, $interval) {
       image: data
     }).success(function (res, status, headers, config) {
       console.log(res);
+      var data = getProcessedImage();
     }).error(function (res, status, headers, config) {
       alert('Post failed');
     });
@@ -96,6 +97,14 @@ function CameraController ($scope, $http, $interval) {
     var data = canvas.toDataURL('image/jpeg');
     data = data.replace(/^data:image\/(png|jpeg);base64,/, "");
     return data;
+  }
+
+  function getProcessedImage() {
+    $http.get('/latest_image').success(function(data, status, headers, config) {
+      console.log(data);
+    }).error(function(data, status, headers, config) {
+      alert('Post failed');
+    });
   }
 
   $scope.getImage = function () {
