@@ -3,9 +3,11 @@ import json
 
 from flask import Flask, render_template, request, make_response
 from app import app
-from werkzeug import secure_filename
 import time
 import datetime
+import cv2.cv as cv
+import cv2 as cv2
+import base64
 
 UPLOAD_FOLDER = 'app/static/snapshots/'
 
@@ -27,9 +29,16 @@ def upload_file():
         with open(os.path.join(app.config['UPLOAD_FOLDER'], str(no_microseconds_time) + '.txt'), 'w+') as f:
             f.write(base64_string)
             f.close()
+        
+        imgdata = base64.b64decode(base64_string)
+        raw_image_filename = os.path.join(app.config['UPLOAD_FOLDER'], str(no_microseconds_time) + '.jpg')
+        with open(raw_image_filename, 'wb') as f:
+            f.write(imgdata)
+
         with open(os.path.join(app.config['UPLOAD_FOLDER'], 'latest.json'), 'w+') as f:
             f.write(json.dumps({
-                'raw': base64_string
+                'raw_string': base64_string
+                'raw_image': raw_image_filename
             }))
             f.close()
         return json.dumps({'status':'success'})
