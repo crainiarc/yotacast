@@ -101,8 +101,12 @@ def upload_file():
 
 @app.route('/latest_image', methods=['GET'])        
 def latest_image():
-    datafile = open(os.path.join(app.config['UPLOAD_FOLDER'], 'latest.json'), 'r',  encoding='utf-8')
-    return json.loads(datafile.read())
+    # datafile = open(os.path.join(app.config['UPLOAD_FOLDER'], 'latest.json'), 'r')
+    with open(os.path.join(app.config['UPLOAD_FOLDER'], 'latest.json'), 'r+') as f:
+        return f.read()
+        # return 
+        # json.loads(datafile.read())
+    # return json.dumps({'status':'lolol'})
 
 @app.route('/delete_all', methods=['GET'])
 def delete_all():
