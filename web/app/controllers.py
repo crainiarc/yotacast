@@ -22,7 +22,7 @@ def index():
 @app.route('/upload', methods=['POST'])        
 def upload_file():
 
-	data = json.loads(request.data)
+    data = json.loads(request.data)
 
     if data["image"]:
 
