@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- From: file:/Users/khankuan/Dropbox/Code/Android/YodaCast/yotaphone_titanium_sdk/res/values-pt-rPT/strings.xml -->
+    <eat-comment />
+
+    <string name="application_is_updated_on_bs" comment="Please split the string in more lines if it is longer then 35 symbols">A aplicação foi atualizada\nno ecrã always-on</string>
+    <string name="flip_popup_default_description">A aplicação está ativa\nno ecrã a cores</string>
+    <string name="flip_popup_default_title">Virar o telefone ao contrário</string>
+    <string name="loading_data">A carregar dados...</string>
+
+</resources>

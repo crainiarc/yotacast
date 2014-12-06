@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="2" >
+
+    <dataSet config="main" >
+        <source path="/Users/khankuan/Dropbox/Code/Android/YodaCast/yotaphone_titanium_sdk/assets" />
+    </dataSet>
+    <dataSet config="release" >
+        <source path="/Users/khankuan/Dropbox/Code/Android/YodaCast/yotaphone_titanium_sdk/build-types/release/assets" />
+    </dataSet>
+
+</merger>

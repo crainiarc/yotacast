@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- From: file:/Users/khankuan/Dropbox/Code/Android/YodaCast/yotaphone_titanium_sdk/res/values-hi/strings.xml -->
+    <eat-comment />
+
+    <string name="application_is_updated_on_bs" comment="Please split the string in more lines if it is longer then 35 symbols">एप्लिकेशन\nalways-on डिस्प्ले पर अपडेट कर दिया गया है</string>
+    <string name="flip_popup_default_description">एप्लिकेशन\nरंगीन डिस्प्ले पर सक्रिय है</string>
+    <string name="flip_popup_default_title">अपना फ़ोन फ़्लिप करें</string>
+    <string name="loading_data">डेटा लोड हो रहा है...</string>
+
+</resources>
