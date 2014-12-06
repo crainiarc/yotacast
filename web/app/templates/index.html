@@ -17,6 +17,7 @@
         <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
         <!-- Latest compiled and minified CSS -->
         <script src="{{ url_for('static', filename='js/vendor/modernizr-2.6.2.min.js') }}"></script>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
         
     </head>
     <body ng-app="CameraApp" ng-controller="CameraController">
@@ -32,16 +33,16 @@
                     <!-- Nav tabs -->
                         <ul class="nav nav-tabs" role="tablist">
                             <li role="presentation" class="active">
-                                <a href="#plane" aria-controls="plane" role="tab" data-toggle="tab">Planes</a>
+                                <a href="#camera" aria-controls="plane" role="tab" data-toggle="tab">Camera</a>
                             </li>
                             <li role="presentation">
-                                <a href="#planview" aria-controls="planview" role="tab" data-toggle="tab">Plan View</a>
+                                <a href="#gallery" aria-controls="planview" role="tab" data-toggle="tab">Gallery</a>
                             </li>
                         </ul>
 
                         <!-- Tab panes -->
                         <div class="tab-content">
-                            <div role="tabpanel" class="tab-pane active" id="plane">
+                            <div role="tabpanel" class="tab-pane active" id="camera">
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
                                         <h3 class="panel-title">Planes</h3>
@@ -49,73 +50,24 @@
                                     <div class="panel-body">
                                         <div class="row">
                                             <div class="col-md-9">
-                                                <canvas id="image-container">
+                                                <video class="video-container">
                                                     
-                                                </canvas>
+                                                </video>
                                             </div>
                                             <div class="col-md-3">
                                                 <div class="panel panel-default">
                                                     <div class="panel-heading">
-                                                        <h3 class="panel-title">Front Plane Properties</h3>
+                                                        <h3 class="panel-title">YotaCast Settings</h3>
                                                     </div>
                                                     <div class="panel-body">
                                                         <div class="form-group">
                                                             <label class="control-label">Top Left</label>
                                                             <div class="input-group">
-                                                                <div class="input-group-addon">X</div>
-                                                                <input type="number" class="form-control" ng-model="planeTopLeft.x" ng-blur="renderPlaneCanvas()">
-                                                                <div class="input-group-addon">Y</div>
-                                                                <input type="number" class="form-control" ng-model="planeTopLeft.y" ng-blur="renderPlaneCanvas()">
+                                                                
                                                             </div>
-                                                            <br>
-                                                            <label class="control-label">Bottom Right</label>
-                                                            <div class="input-group">
-                                                                <div class="input-group-addon">X</div>
-                                                                <input type="number" class="form-control" ng-model="planeBottomRight.x" ng-blur="renderPlaneCanvas()">
-                                                                <div class="input-group-addon">Y</div>
-                                                                <input type="number" class="form-control" ng-model="planeBottomRight.y" ng-blur="renderPlaneCanvas()">
-                                                            </div>
+                                                            <div id="slider"></div>
                                                         </div>
-                                                    </div>
-                                                </div>
-                                                <div class="panel panel-default">
-                                                    <div class="panel-heading">
-                                                        <h3 class="panel-title">Vanishing Point</h3>
-                                                    </div>
-                                                    <div class="panel-body">
-                                                        <div class="form-group">
-                                                            <div class="input-group">
-                                                                <div class="input-group-addon">X</div>
-                                                                <input type="number" class="form-control" ng-model="vanishingPoint.left" ng-blur="renderPlaneCanvas()">
-                                                                <div class="input-group-addon">Y</div>
-                                                                <input type="number" class="form-control" ng-model="vanishingPoint.top" ng-blur="renderPlaneCanvas()">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="panel panel-default">
-                                                    <div class="panel-heading">
-                                                        <h3 class="panel-title">World Coordinates</h3>
-                                                    </div>
-                                                    <div class="panel-body">
-                                                        <div class="form-group">
-                                                            <label for="world-width" class="col-sm-4 control-label">Width</label>
-                                                            <div class="col-sm-8">
-                                                                <input type="number" class="form-control" id="world-width" placeholder="Width" ng-model="world.width">
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="world-width" class="col-sm-4 control-label">Height</label>
-                                                            <div class="col-sm-8">
-                                                                <input type="number" class="form-control" id="world-height" placeholder="Height" ng-model="world.height">
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label for="world-width" class="col-sm-4 control-label">Depth</label>
-                                                            <div class="col-sm-8">
-                                                                <input type="number" class="form-control" id="world-depth" placeholder="Depth" ng-model="world.depth">
-                                                            </div>
-                                                        </div>
+                                                        <button class="btn btn-default" ng-click="uploadImage()">Post Image</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -123,83 +75,24 @@
                                     </div>
                                 </div>
                             </div>
-                            <div role="tabpanel" class="tab-pane" id="planview">
+                            <div role="tabpanel" class="tab-pane" id="gallery">
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
-                                        <h3 class="panel-title">Plan View</h3>
+                                        <h3 class="panel-title">Snapshots Gallery</h3>
                                     </div>
                                     <div class="panel-body">
                                         <div class="row">
                                             <div class="col-md-9">
                                                 <canvas id="map-container"></canvas>
-                                                <table class="table table-striped table-hover">
-                                                    <tr>
-                                                        <th>Point</th>
-                                                        <th>X</th>
-                                                        <th>Y</th>
-                                                        <th>Z</th>
-                                                        <th></th>
-                                                    </tr>
-                                                    <tr ng-repeat="pt in pathPoints track by $index">
-                                                        <td>[[$index+1]]</td>
-                                                        <td>[[ normalizePathPoint(pt.point).x ]]</td>
-                                                        <td>[[ normalizePathPoint(pt.point).y ]]</td>
-                                                        <td><input class="form-control z-value" type="number" ng-model="pt.point.z"></td>
-                                                        <td><button class="btn btn-warning btn-xs" ng-click="deletePoint($index)">Delete Point</button></td>
-                                                    </tr>
-                                                    <tr ng-show="pathPoints.length === 0">
-                                                        <td colspan="5">No points selected yet</td>
-                                                    </tr>
-                                                </table>
                                             </div>
                                             <div class="col-md-3">
                                                 <div class="panel panel-default">
-                                                    <div class="panel-heading">
-                                                        <h3 class="panel-title">Boundary Properties</h3>
-                                                    </div>
-                                                    <div class="panel-body">
-                                                        <div class="form-group">
-                                                            <label class="control-label">Top Left</label>
-                                                            <div class="input-group">
-                                                                <div class="input-group-addon">X</div>
-                                                                <input type="number" class="form-control" placeholder="Top Left X" ng-model="topLeft.x" ng-blur="renderBoundaryRect()">
-                                                                <div class="input-group-addon">Y</div>
-                                                                <input type="number" class="form-control" placeholder="Top Left Y" ng-model="topLeft.y" ng-blur="renderBoundaryRect()">
-                                                            </div>
-                                                            <br>
-                                                            <label class="control-label">Bottom Right</label>
-                                                            <div class="input-group">
-                                                                <div class="input-group-addon">X</div>
-                                                                <input type="number" class="form-control" placeholder="Bottom Right X" ng-model="bottomRight.x" ng-blur="renderBoundaryRect()">
-                                                                <div class="input-group-addon">Y</div>
-                                                                <input type="number" class="form-control" placeholder="Bottom Right Y" ng-model="bottomRight.y" ng-blur="renderBoundaryRect()">
-                                                            </div>
-                                                            <br>
-                                                            <button class="btn [[ {true: 'btn-danger', false: 'btn-success'}[boundaryRectEditable] ]]" ng-disabled="isDrawingPath" ng-click="toggleBoundaryRectEditing()">[[ {true: 'Stop Editing', false: 'Edit Boundary Rectangle'}[boundaryRectEditable] ]]</button>
-                                                            <br>
-                                                            <br>
-                                                            <label class="control-label">Real World Boundary Box Dimensions</label>
-                                                            <div class="input-group">
-                                                                <div class="input-group-addon">W</div>
-                                                                <input type="number" class="form-control" placeholder="Width" ng-model="boundaryWidth">
-                                                                <div class="input-group-addon">H</div>
-                                                                <input type="number" class="form-control" placeholder="Height" ng-model="boundaryHeight">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="panel panel-default">
-                                                    <div class="panel-heading">
-                                                        <h3 class="panel-title">Video Rendering</h3>
-                                                    </div>
-                                                    <div class="panel-body">
-                                                        <button class="btn btn-info btn-block" ng-disabled="boundaryRectEditable || pathPoints.length < 4 || renderingVideo" ng-click="renderVideoWithPath()">Create Video</button>
-                                                    <span ng-show="renderingVideo">Rendering...</span>
+                                                    
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -208,8 +101,9 @@
         </div>
         
         <script src="{{ url_for('static', filename='js/vendor/jquery-1.10.2.min.js') }}"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+        <script src="{{ url_for('static', filename='js/vendor/jquery-ui.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/vendor/bootstrap.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/vendor/angular.min.js') }}"></script>
         <script src="{{ url_for('static', filename='js/vendor/fabric.min.js') }}"></script>
         <script src="{{ url_for('static', filename='js/plugins.js') }}"></script>
         <script src="{{ url_for('static', filename='js/main.js') }}"></script>

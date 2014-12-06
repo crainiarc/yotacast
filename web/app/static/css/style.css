@@ -1,5 +1,7 @@
-.canvas-container {
-  margin-bottom: 20px;
+.video-container {
+  background-color: #ccc;
+  height: 450px;
+  width: 800px;
 }
 
 .modal-dialog {
