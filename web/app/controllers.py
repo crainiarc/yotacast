@@ -59,7 +59,8 @@ def upload_file():
             cv2.imwrite(grayscale_image_filepath, image)
 
             # Save equalized iamge as <timestamp>-equalized.jpg
-            eq = cv2.equalizeHist(image)
+            clahe = cv2.createCLAHE(clipLimit=2.0, tileGridSize=(8,8))
+            eq = clahe.apply(image)
             equalized_image_filename = str(no_microseconds_time) + '-equalized.jpg'
             equalized_image_filepath = os.path.join(app.config['UPLOAD_FOLDER'], equalized_image_filename)
             cv2.imwrite(equalized_image_filepath, eq)
