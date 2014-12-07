@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:sdk="http://schemas.android.com/apk/res-auto"
     sdk:size="small|medium|large|medium_half|tiny|extra_large"
-    sdk:icon_frontscreen="@drawable/ic_launcher"
+    sdk:icon_frontscreen="@drawable/logo_white"
     sdk:category="Business|Communication">
 </backscreen-widget-provider>
 

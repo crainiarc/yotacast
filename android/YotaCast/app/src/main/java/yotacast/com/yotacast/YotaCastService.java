@@ -174,7 +174,9 @@ public class YotaCastService extends Service {
             boolean alerted = prefs.getBoolean("alerted", false);
             if (alerted)
                 showAlert();
-            
+            else
+                hideAlert();
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -192,9 +194,9 @@ public class YotaCastService extends Service {
         AppWidgetManager manager = AppWidgetManager.getInstance(YotaCastService.this);
         manager.updateAppWidget(thisWidget, view);
 
-        if (position != -1)
+        if (position == -1)
             imageCache.add(img);
-        if (imageCache.size() > 5)
+        if (imageCache.size() > 10)
             imageCache.remove(0);
     }
 
@@ -281,10 +283,13 @@ public class YotaCastService extends Service {
 
         RemoteViews view = new RemoteViews(getPackageName(), R.layout.yotacast);
         view.setViewVisibility(R.id.alert, View.VISIBLE);
-        if (isWhite)
+        if (isWhite) {
             view.setTextColor(R.id.alert, Color.BLACK);
-        else
+            view.setTextViewText(R.id.alert, "*** ALERT ***");
+        } else {
             view.setTextColor(R.id.alert, Color.WHITE);
+            view.setTextViewText(R.id.alert, "ALERT");
+        }
         isWhite = !isWhite;
 
         // Push update for this widget to the home screen
@@ -302,7 +307,7 @@ public class YotaCastService extends Service {
 
     public void hideAlert(){
         RemoteViews view = new RemoteViews(getPackageName(), R.layout.yotacast);
-        view.setViewVisibility(R.id.alert, View.INVISIBLE);
+        view.setTextViewText(R.id.alert, "ALERT");
 
         // Push update for this widget to the home screen
         ComponentName thisWidget = new ComponentName(YotaCastService.this, YotaCastWidget.class);
