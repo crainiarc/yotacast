@@ -1,7 +1,28 @@
+@font-face {
+  font-family: DINPro;
+  src: url(DINPro-Regular.otf);
+}
+
+@font-face {
+  font-family: DINPro;
+  font-weight: bold;
+  src: url(DINPro-Bold.otf);
+}
+
+@font-face {
+  font-family: DINPro;
+  font-weight: 300;
+  src: url(DINPro-Light.otf);
+}
+
 html, body {
   font-family: 'DINPro', 'Helvetica-Neue', Helvetica, sans-serif;
   height: 100%;
   background-color: #337c74;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'DINPro', 'Helvetica-Neue', Helvetica, sans-serif;
 }
 
 .full-height {
