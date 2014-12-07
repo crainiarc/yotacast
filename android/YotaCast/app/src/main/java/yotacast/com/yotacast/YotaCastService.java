@@ -284,11 +284,10 @@ public class YotaCastService extends Service {
         RemoteViews view = new RemoteViews(getPackageName(), R.layout.yotacast);
         view.setViewVisibility(R.id.alert, View.VISIBLE);
         if (isWhite) {
-            view.setTextColor(R.id.alert, Color.BLACK);
-            view.setTextViewText(R.id.alert, "*** ALERT ***");
+            view.setTextViewText(R.id.alert, "ALERT");
         } else {
             view.setTextColor(R.id.alert, Color.WHITE);
-            view.setTextViewText(R.id.alert, "ALERT");
+            view.setTextViewText(R.id.alert, "!!! ALERT !!!");
         }
         isWhite = !isWhite;
 
@@ -307,7 +306,7 @@ public class YotaCastService extends Service {
 
     public void hideAlert(){
         RemoteViews view = new RemoteViews(getPackageName(), R.layout.yotacast);
-        view.setTextViewText(R.id.alert, "ALERT");
+        view.setTextViewText(R.id.alert, "Play Alert");
 
         // Push update for this widget to the home screen
         ComponentName thisWidget = new ComponentName(YotaCastService.this, YotaCastWidget.class);
