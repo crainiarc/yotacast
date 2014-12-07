@@ -8,11 +8,15 @@ html, body {
   height: 100%;
 }
 
+.theme { 
+  background-image: url(../img/background.jpg);
+  background-size: cover;
+  padding-top: 30px;
+}
+
 .main-page {
   text-align: center;
   position: relative;
-  background-image: url(../img/background.jpg);
-  background-size: cover;
 }
 
 .main-page .main-container {
@@ -38,7 +42,7 @@ html, body {
   top: 50%;
   margin-top: -250px;
   left: 50%;
-  margin-left: -150px;
+  margin-left: -300px;
 }
 
 .main-page .logo-circle.shown {
@@ -145,6 +149,11 @@ html, body {
   -webkit-animation: pulsate 1s infinite alternate;
 }
 
+.logo-icon img {
+  margin: 0 auto;
+  width: 35%;
+}
+
 .main-page .bottom-nav {
   position: fixed;
   left: 0;
@@ -223,6 +232,7 @@ html, body {
 }
 
 .snapshots-gallery li {
+  cursor: pointer;
   display: inline-block;
   list-style: none;
   margin: 10px;
@@ -238,4 +248,8 @@ html, body {
 
 .main-section {
   min-height: 500px;
+}
+
+.modal-dialog {
+  width: 1000px !important;
 }

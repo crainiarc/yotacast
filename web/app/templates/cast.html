@@ -21,7 +21,7 @@
         <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
         
     </head>
-    <body ng-app="CameraApp" ng-controller="CameraController" class="main-page">
+    <body ng-app="CameraApp" ng-controller="CameraController" class="theme">
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
@@ -107,7 +107,7 @@
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <ul class="snapshots-gallery">
-                                                    <li ng-repeat="snapshot in snapshots" class="snapshot-listing [[ {'true': 'movement'}[snapshot.movement] ]]">
+                                                    <li ng-repeat="snapshot in snapshots" class="snapshot-listing [[ {'true': 'movement'}[snapshot.movement] ]]" ng-click="chooseImage(snapshot)">
                                                         <img ng-src="/static/snapshots/[[snapshot.equalized_image]]">
                                                     </li>
                                                 </ul>
@@ -121,7 +121,33 @@
                 </div>
             </div>
         </div>
-        
+        <div class="modal fade" id="snapshot-modal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title">Inspect Snapshot</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <h5>Raw Image</h5>
+                                <img class="img-responsive" ng-src="/static/snapshots/[[chosenImage.raw_image]]">
+                            </div>
+                            <div class="col-md-4">
+                                <h5>Grayscale Image</h5>
+                                <img class="img-responsive" ng-src="/static/snapshots/[[chosenImage.grayscale_image]]">
+                            </div>
+                            <div class="col-md-4">
+                                <h5>Histogram Equalized Image</h5>
+                                <img class="img-responsive" ng-src="/static/snapshots/[[chosenImage.equalized_image]]">
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
         <script src="{{ url_for('static', filename='js/vendor/jquery-1.10.2.min.js') }}"></script>
         <script src="{{ url_for('static', filename='js/vendor/jquery-ui.js') }}"></script>
         <script src="{{ url_for('static', filename='js/vendor/bootstrap.min.js') }}"></script>

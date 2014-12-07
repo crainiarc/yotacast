@@ -110,9 +110,7 @@ function CameraController ($scope, $http, $interval) {
   }
 
   $scope.activateAlert = function () {
-    $http.post('/play_alert', {
-      play_alert: true
-    }).success(function (res, status, headers, config) {
+    $http.post('/play_alert', {}).success(function (res, status, headers, config) {
       console.log(res);
     }).error(function (res, status, headers, config) {
       alert('Post failed');
@@ -120,9 +118,7 @@ function CameraController ($scope, $http, $interval) {
   };
 
   $scope.stopAlert = function () {
-    $http.post('/play_alert', {
-      play_alert: false
-    }).success(function (res, status, headers, config) {
+    $http.post('/stop_alert', {}).success(function (res, status, headers, config) {
       console.log(res);
     }).error(function (res, status, headers, config) {
       alert('Post failed');
@@ -163,4 +159,9 @@ function CameraController ($scope, $http, $interval) {
       alert('Image retrieval failed');
     });
   };
+
+  $scope.chooseImage = function (image) {
+    $scope.chosenImage = image;
+    $('#snapshot-modal').modal();
+  }
 }

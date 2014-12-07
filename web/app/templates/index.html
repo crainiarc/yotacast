@@ -20,7 +20,7 @@
         <!-- Latest compiled and minified CSS -->
         <script src="{{ url_for('static', filename='js/vendor/modernizr-2.6.2.min.js') }}"></script>
     </head>
-    <body ng-app="CameraApp" ng-controller="CameraController">
+    <body ng-app="CameraApp" ng-controller="CameraController" class="theme">
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
@@ -32,7 +32,7 @@
                     <div class="logo-background rotate-clockwise"></div>
                     <div class="logo-background-2 rotate-anticlockwise"></div>
                     <div class="logo-container">
-                        <h1 class="logo-icon pulsing-logo">Y</h1>
+                        <h1 class="logo-icon pulsing-logo"><img class="img-responsive" src="/static/img/logo-white.png"></h1>
                         <h4 class="page-title logo-title pulsing-logo">YotaCast</h4>
                         <p class="quote">"The other side of surveillance, the cooler side."</p>
                     </div>
