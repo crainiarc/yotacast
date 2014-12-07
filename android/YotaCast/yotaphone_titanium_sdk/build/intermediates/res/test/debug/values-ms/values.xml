@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- From: file:/Users/khankuan/Desktop/yotacast/android/YotaCast/yotaphone_titanium_sdk/build/intermediates/bundles/debug/res/values-ms/values.xml -->
+    <eat-comment />
+
+    <string name="application_is_updated_on_bs" comment="Please split the string in more lines if it is longer then 35 symbols">Aplikasi telah dikemas kini\npada paparan sentiasa hidup</string>
+    <string name="flip_popup_default_description">Aplikasi aktif\npada paparan yang berwarna</string>
+    <string name="flip_popup_default_title">Terbalikkan telefon anda</string>
+    <string name="loading_data">Memuat data...</string>
+
+</resources>

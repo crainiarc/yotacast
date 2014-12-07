@@ -15,6 +15,7 @@ import android.os.IBinder;
 import android.preference.PreferenceManager;
 import android.util.Base64;
 import android.util.Log;
+import android.view.View;
 import android.widget.RemoteViews;
 
 import org.json.JSONException;
@@ -44,6 +45,10 @@ public class YotaCastService extends Service {
         Log.d("casting", "on");
         t = new CastTask().execute();
         prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+
+        showView();
+
+
         return START_STICKY;
     }
 
@@ -73,8 +78,6 @@ public class YotaCastService extends Service {
                 Thread.sleep(freq);
             } catch (Exception e) {
                 e.printStackTrace();
-                Log.d("yota", "err2");
-                jsonTask.cancel(true);
                 return null;
             }
 
@@ -89,44 +92,49 @@ public class YotaCastService extends Service {
     // you can make this class as another java file so it will be separated from your main activity.
     public class AsyncTaskParseJson extends AsyncTask<Void, Void, Void> {
 
-        String img = null;
-        boolean alert = false;
 
         @Override
         protected Void doInBackground(Void... arg0) {
-
-            String endpoint = prefs.getString("endpoint", "http://google.com");
-            try {
-
-                // instantiate our json parser
-                JSONParser jParser = new JSONParser();
-
-                // get json string from url
-                JSONObject json = jParser.getJSONFromUrl(endpoint);
-
-                // img and alert
-                img = json.getString("raw_string");
-                alert = json.getBoolean("play_alert");
-                byte[] decodedString = Base64.decode(img, Base64.NO_WRAP);
-                InputStream inputStream  = new ByteArrayInputStream(decodedString);
-                Bitmap bitmap  = BitmapFactory.decodeStream(inputStream);
-                updateView(bitmap);
-
-                if (alert)
-                    showAlert();
-
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            refresh();
             return null;
+        }
+
+    }
+
+    public void refresh(){
+        String img = null;
+        boolean alert = false;
+        String endpoint = prefs.getString("endpoint", "http://google.com");
+        try {
+
+            // instantiate our json parser
+            JSONParser jParser = new JSONParser();
+
+            // get json string from url
+            JSONObject json = jParser.getJSONFromUrl(endpoint);
+
+            if (json == null)
+                return;
+
+            // img and alert
+            img = json.getString("raw_string");
+            alert = json.getBoolean("play_alert");
+            byte[] decodedString = Base64.decode(img, Base64.NO_WRAP);
+            InputStream inputStream  = new ByteArrayInputStream(decodedString);
+            Bitmap bitmap  = BitmapFactory.decodeStream(inputStream);
+            updateView(bitmap);
+
+            if (alert)
+                showAlert();
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
     }
 
 
     public void updateView(Bitmap img){
-        if (ended)
-            return;
 
         RemoteViews view = new RemoteViews(getPackageName(), R.layout.yotacast);
         view.setImageViewBitmap(R.id.imageView, img);
@@ -136,6 +144,33 @@ public class YotaCastService extends Service {
         AppWidgetManager manager = AppWidgetManager.getInstance(YotaCastService.this);
         manager.updateAppWidget(thisWidget, view);
     }
+
+
+    public void hideView(){
+
+        RemoteViews view = new RemoteViews(getPackageName(), R.layout.yotacast);
+        view.setViewVisibility(R.id.imageView, View.INVISIBLE);
+        view.setViewVisibility(R.id.imagePlaceholder, View.VISIBLE);
+
+        // Push update for this widget to the home screen
+        ComponentName thisWidget = new ComponentName(YotaCastService.this, YotaCastWidget.class);
+        AppWidgetManager manager = AppWidgetManager.getInstance(YotaCastService.this);
+        manager.updateAppWidget(thisWidget, view);
+    }
+
+
+    public void showView(){
+
+        RemoteViews view = new RemoteViews(getPackageName(), R.layout.yotacast);
+        view.setViewVisibility(R.id.imageView, View.VISIBLE);
+        view.setViewVisibility(R.id.imagePlaceholder, View.INVISIBLE);
+
+        // Push update for this widget to the home screen
+        ComponentName thisWidget = new ComponentName(YotaCastService.this, YotaCastWidget.class);
+        AppWidgetManager manager = AppWidgetManager.getInstance(YotaCastService.this);
+        manager.updateAppWidget(thisWidget, view);
+    }
+
 
 
     public void showAlert(){
@@ -152,8 +187,11 @@ public class YotaCastService extends Service {
     public void onDestroy(){
         ended = true;
         Log.d("casting", "off");
-        t.cancel(true);
-        updateView(BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher));
+        if (jsonTask != null)
+            jsonTask.cancel(true);
+        if (t != null)
+            t.cancel(true);
+        hideView();
         super.onDestroy();
     }
 

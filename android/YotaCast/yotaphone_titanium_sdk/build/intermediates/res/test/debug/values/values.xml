@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- From: file:/Users/khankuan/Desktop/yotacast/android/YotaCast/yotaphone_titanium_sdk/build/intermediates/bundles/debug/res/values/values.xml -->
+    <eat-comment />
+
+    <declare-styleable name="BackscreenWidgetInfo">
+        <attr name="size">
+            <flag name="large" value="1" />
+            <flag name="medium" value="2" />
+            <flag name="medium_half" value="4" />
+            <flag name="small" value="8" />
+            <flag name="tiny" value="16" />
+            <flag name="extra_large" value="32" />
+            <flag name="full_screen" value="64" />
+        </attr>
+        <attr name="icon_frontscreen" format="reference" />
+        <attr name="category">
+            <flag name="Communication" value="1" />
+            <flag name="Social" value="2" />
+            <flag name="Productivity" value="4" />
+            <flag name="Entertainment" value="8" />
+            <flag name="Tools" value="16" />
+            <flag name="Children" value="32" />
+            <flag name="Lifestyle" value="64" />
+            <flag name="HealthAndFitness" value="128" />
+            <flag name="Business" value="256" />
+            <flag name="BooksAndMagazines" value="512" />
+            <flag name="News" value="1024" />
+            <flag name="Weather" value="2048" />
+            <flag name="Travel" value="4096" />
+            <flag name="Education" value="8192" />
+            <flag name="Personalisation" value="16384" />
+            <flag name="Games" value="32768" />
+        </attr>
+    </declare-styleable>
+
+    <dimen name="navigation_panel_height">80px</dimen>
+    <dimen name="popup_flip_padding_side">10.67dp</dimen>
+    <dimen name="popup_flip_padding_top">25.33dp</dimen>
+
+    <integer name="vibration_time">18</integer>
+
+    <string name="application_is_updated_on_bs" comment="Please split the string in more lines if it is longer then 35 symbols">Application is updated on Back Screen</string>
+    <string name="flip_popup_default_description">Application is active \nat the front screen</string>
+    <string name="flip_popup_default_title">Flip your phone</string>
+    <string name="loading_data">Loading data...</string>
+
+</resources>

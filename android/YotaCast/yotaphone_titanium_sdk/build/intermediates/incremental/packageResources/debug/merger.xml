@@ -1,0 +1,671 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="2" >
+
+    <dataSet config="main" >
+        <source path="/Users/khankuan/Desktop/yotacast/android/YotaCast/yotaphone_titanium_sdk/res" >
+            <file
+                name="action_bar_p2b_btn"
+                path="/Users/khankuan/Desktop/yotacast/android/YotaCast/yotaphone_titanium_sdk/res/drawable/action_bar_p2b_btn.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="bs_notif_dot_line"
+                path="/Users/khankuan/Desktop/yotacast/android/YotaCast/yotaphone_titanium_sdk/res/drawable/bs_notif_dot_line.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="bs_notification_shape"
+                path="/Users/khankuan/Desktop/yotacast/android/YotaCast/yotaphone_titanium_sdk/res/drawable/bs_notification_shape.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="dot_line"
+                path="/Users/khankuan/Desktop/yotacast/android/YotaCast/yotaphone_titanium_sdk/res/drawable/dot_line.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="flip_popup_bg"
+                path="/Users/khankuan/Desktop/yotacast/android/YotaCast/yotaphone_titanium_sdk/res/drawable/flip_popup_bg.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="widget_dot_line"
+                path="/Users/khankuan/Desktop/yotacast/android/YotaCast/yotaphone_titanium_sdk/res/drawable/widget_dot_line.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="bs_notif_pattern"
+                path="/Users/khankuan/Desktop/yotacast/android/YotaCast/yotaphone_titanium_sdk/res/drawable-hdpi/bs_notif_pattern.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="bs_popup_pattern"
+                path="/Users/khankuan/Desktop/yotacast/android/YotaCast/yotaphone_titanium_sdk/res/drawable-hdpi/bs_popup_pattern.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="popup_img_rotatethephone"
+                path="/Users/khankuan/Desktop/yotacast/android/YotaCast/yotaphone_titanium_sdk/res/drawable-hdpi/popup_img_rotatethephone.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="popup_pattern"
+                path="/Users/khankuan/Desktop/yotacast/android/YotaCast/yotaphone_titanium_sdk/res/drawable-hdpi/popup_pattern.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="template_icon"
+                path="/Users/khankuan/Desktop/yotacast/android/YotaCast/yotaphone_titanium_sdk/res/drawable-hdpi/template_icon.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_menu_p2b"
+                path="/Users/khankuan/Desktop/yotacast/android/YotaCast/yotaphone_titanium_sdk/res/drawable-xhdpi/ic_menu_p2b.png"
+                qualifiers="xhdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_menu_p2b_active"
+                path="/Users/khankuan/Desktop/yotacast/android/YotaCast/yotaphone_titanium_sdk/res/drawable-xhdpi/ic_menu_p2b_active.png"
+                qualifiers="xhdpi-v4"
+                type="drawable" />
+            <file
+                name="bs_notification"
+                path="/Users/khankuan/Desktop/yotacast/android/YotaCast/yotaphone_titanium_sdk/res/layout/bs_notification.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="flip_layout"
+                path="/Users/khankuan/Desktop/yotacast/android/YotaCast/yotaphone_titanium_sdk/res/layout/flip_layout.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="popup_flip_layout"
+                path="/Users/khankuan/Desktop/yotacast/android/YotaCast/yotaphone_titanium_sdk/res/layout/popup_flip_layout.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="template_widget_icon_footer"
+                path="/Users/khankuan/Desktop/yotacast/android/YotaCast/yotaphone_titanium_sdk/res/layout/template_widget_icon_footer.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="template_widget_icon_header"
+                path="/Users/khankuan/Desktop/yotacast/android/YotaCast/yotaphone_titanium_sdk/res/layout/template_widget_icon_header.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="template_widget_loading_data"
+                path="/Users/khankuan/Desktop/yotacast/android/YotaCast/yotaphone_titanium_sdk/res/layout/template_widget_loading_data.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="template_widget_text"
+                path="/Users/khankuan/Desktop/yotacast/android/YotaCast/yotaphone_titanium_sdk/res/layout/template_widget_text.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="template_widget_text_and_button"
+                path="/Users/khankuan/Desktop/yotacast/android/YotaCast/yotaphone_titanium_sdk/res/layout/template_widget_text_and_button.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="template_widget_tiny"
+                path="/Users/khankuan/Desktop/yotacast/android/YotaCast/yotaphone_titanium_sdk/res/layout/template_widget_tiny.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                path="/Users/khankuan/Desktop/yotacast/android/YotaCast/yotaphone_titanium_sdk/res/values/common-values.xml"
+                qualifiers="" >
+                <integer name="vibration_time" >
+18
+                </integer>
+            </file>
+            <file
+                path="/Users/khankuan/Desktop/yotacast/android/YotaCast/yotaphone_titanium_sdk/res/values/dimens.xml"
+                qualifiers="" >
+                <dimen name="navigation_panel_height" >80px
+                </dimen>
+                <dimen name="popup_flip_padding_side" >10.67dp
+                </dimen>
+                <dimen name="popup_flip_padding_top" >25.33dp
+                </dimen>
+            </file>
+            <file
+                path="/Users/khankuan/Desktop/yotacast/android/YotaCast/yotaphone_titanium_sdk/res/values/strings.xml"
+                qualifiers="" >
+                <string name="flip_popup_default_description" >Application is active \nat the front screen
+                </string>
+                <string name="loading_data" >Loading data...
+                </string>
+                <string
+                    name="application_is_updated_on_bs"
+                    comment="Please split the string in more lines if it is longer then 35 symbols" >Application is updated on Back Screen
+                </string>
+                <string name="flip_popup_default_title" >Flip your phone
+                </string>
+            </file>
+            <file
+                path="/Users/khankuan/Desktop/yotacast/android/YotaCast/yotaphone_titanium_sdk/res/values/widget_attrib.xml"
+                qualifiers="" >
+                <declare-styleable name="BackscreenWidgetInfo" >
+                    <attr name="size" >
+                        <flag
+                            name="large"
+                            value="1" />
+                        <flag
+                            name="medium"
+                            value="2" />
+                        <flag
+                            name="medium_half"
+                            value="4" />
+                        <flag
+                            name="small"
+                            value="8" />
+                        <flag
+                            name="tiny"
+                            value="16" />
+                        <flag
+                            name="extra_large"
+                            value="32" />
+                        <flag
+                            name="full_screen"
+                            value="64" />
+                    </attr>
+                    <attr
+                        name="icon_frontscreen"
+                        format="reference" />
+                    <attr name="category" >
+                        <flag
+                            name="Communication"
+                            value="1" />
+                        <flag
+                            name="Social"
+                            value="2" />
+                        <flag
+                            name="Productivity"
+                            value="4" />
+                        <flag
+                            name="Entertainment"
+                            value="8" />
+                        <flag
+                            name="Tools"
+                            value="16" />
+                        <flag
+                            name="Children"
+                            value="32" />
+                        <flag
+                            name="Lifestyle"
+                            value="64" />
+                        <flag
+                            name="HealthAndFitness"
+                            value="128" />
+                        <flag
+                            name="Business"
+                            value="256" />
+                        <flag
+                            name="BooksAndMagazines"
+                            value="512" />
+                        <flag
+                            name="News"
+                            value="1024" />
+                        <flag
+                            name="Weather"
+                            value="2048" />
+                        <flag
+                            name="Travel"
+                            value="4096" />
+                        <flag
+                            name="Education"
+                            value="8192" />
+                        <flag
+                            name="Personalisation"
+                            value="16384" />
+                        <flag
+                            name="Games"
+                            value="32768" />
+                    </attr>
+                </declare-styleable>
+            </file>
+            <file
+                path="/Users/khankuan/Desktop/yotacast/android/YotaCast/yotaphone_titanium_sdk/res/values-ar/strings.xml"
+                qualifiers="ar" >
+                <string name="flip_popup_default_title" >اقلب الهاتف
+                </string>
+                <string
+                    name="application_is_updated_on_bs"
+                    comment="Please split the string in more lines if it is longer then 35 symbols" >تم تحديث التطبيق\nعلى الشاشة always-on
+                </string>
+                <string name="flip_popup_default_description" >التطبيق نشط\nعلى الشاشة الملونة.
+                </string>
+                <string name="loading_data" >جارٍ تحميل البيانات...
+                </string>
+            </file>
+            <file
+                path="/Users/khankuan/Desktop/yotacast/android/YotaCast/yotaphone_titanium_sdk/res/values-be/strings.xml"
+                qualifiers="be" >
+                <string name="flip_popup_default_description" >Application is active \nat the front screen
+                </string>
+                <string name="flip_popup_default_title" >Flip your phone
+                </string>
+                <string name="loading_data" >Loading data...
+                </string>
+                <string
+                    name="application_is_updated_on_bs"
+                    comment="Please split the string in more lines if it is longer then 35 symbols" >Application is updated on Back Screen
+                </string>
+            </file>
+            <file
+                path="/Users/khankuan/Desktop/yotacast/android/YotaCast/yotaphone_titanium_sdk/res/values-bg/strings.xml"
+                qualifiers="bg" >
+                <string name="flip_popup_default_description" >Application is active \nat the front screen
+                </string>
+                <string
+                    name="application_is_updated_on_bs"
+                    comment="Please split the string in more lines if it is longer then 35 symbols" >Application is updated on Back Screen
+                </string>
+                <string name="flip_popup_default_title" >Flip your phone
+                </string>
+                <string name="loading_data" >Loading data...
+                </string>
+            </file>
+            <file
+                path="/Users/khankuan/Desktop/yotacast/android/YotaCast/yotaphone_titanium_sdk/res/values-da/strings.xml"
+                qualifiers="da" >
+                <string name="flip_popup_default_title" >Vend din telefon
+                </string>
+                <string name="flip_popup_default_description" >Appen er aktiv\npå farveskærmen
+                </string>
+                <string name="loading_data" >Indlæser data...
+                </string>
+                <string
+                    name="application_is_updated_on_bs"
+                    comment="Please split the string in more lines if it is longer then 35 symbols" >Appen er blevet opdateret\npå always-on-skærmen
+                </string>
+            </file>
+            <file
+                path="/Users/khankuan/Desktop/yotacast/android/YotaCast/yotaphone_titanium_sdk/res/values-de/strings.xml"
+                qualifiers="de" >
+                <string
+                    name="application_is_updated_on_bs"
+                    comment="Please split the string in more lines if it is longer then 35 symbols" >Anwendung wurde auf dem immer aktiven Display aktualisiert\n
+                </string>
+                <string name="flip_popup_default_title" >Drehen Sie das Telefon um.
+                </string>
+                <string name="flip_popup_default_description" >Anwendung ist auf dem Farbdisplay aktiv\n
+                </string>
+                <string name="loading_data" >Daten werden geladen...
+                </string>
+            </file>
+            <file
+                path="/Users/khankuan/Desktop/yotacast/android/YotaCast/yotaphone_titanium_sdk/res/values-el/strings.xml"
+                qualifiers="el" >
+                <string name="flip_popup_default_title" >Γυρίστε το τηλέφωνό σας από την άλλη πλευρά
+                </string>
+                <string
+                    name="application_is_updated_on_bs"
+                    comment="Please split the string in more lines if it is longer then 35 symbols" >Η εφαρμογή ενημερώθηκε\nστην οθόνη always-on
+                </string>
+                <string name="loading_data" >Φόρτωση δεδομένων...
+                </string>
+                <string name="flip_popup_default_description" >Η εφαρμογή είναι ενεργή\nστην έγχρωμη οθόνη
+                </string>
+            </file>
+            <file
+                path="/Users/khankuan/Desktop/yotacast/android/YotaCast/yotaphone_titanium_sdk/res/values-en-rGB/strings.xml"
+                qualifiers="en-rGB" >
+                <string name="flip_popup_default_description" >Application is active\non the colour display
+                </string>
+                <string name="loading_data" >Loading data...
+                </string>
+                <string name="flip_popup_default_title" >Flip over your phone
+                </string>
+                <string
+                    name="application_is_updated_on_bs"
+                    comment="Please split the string in more lines if it is longer then 35 symbols" >Application has been updated\non always-on display
+                </string>
+            </file>
+            <file
+                path="/Users/khankuan/Desktop/yotacast/android/YotaCast/yotaphone_titanium_sdk/res/values-en-rUS/strings.xml"
+                qualifiers="en-rUS" >
+                <string name="flip_popup_default_description" >Application is active\non the color display
+                </string>
+                <string
+                    name="application_is_updated_on_bs"
+                    comment="Please split the string in more lines if it is longer then 35 symbols" >Application has been updated\non always-on display
+                </string>
+                <string name="loading_data" >Loading data...
+                </string>
+                <string name="flip_popup_default_title" >Flip over your phone
+                </string>
+            </file>
+            <file
+                path="/Users/khankuan/Desktop/yotacast/android/YotaCast/yotaphone_titanium_sdk/res/values-es-rES/strings.xml"
+                qualifiers="es-rES" >
+                <string name="flip_popup_default_title" >Da la vuelta al teléfono
+                </string>
+                <string name="loading_data" >Cargando datos...
+                </string>
+                <string
+                    name="application_is_updated_on_bs"
+                    comment="Please split the string in more lines if it is longer then 35 symbols" >Aplicación actualizada en\nla pantalla always-on
+                </string>
+                <string name="flip_popup_default_description" >Aplicación activa\nen la pantalla de color
+                </string>
+            </file>
+            <file
+                path="/Users/khankuan/Desktop/yotacast/android/YotaCast/yotaphone_titanium_sdk/res/values-fi/strings.xml"
+                qualifiers="fi" >
+                <string name="loading_data" >Ladataan tietoja...
+                </string>
+                <string name="flip_popup_default_title" >Flip your phone
+                </string>
+                <string
+                    name="application_is_updated_on_bs"
+                    comment="Please split the string in more lines if it is longer then 35 symbols" >Sovellus on päivitetty\nalways-on-näytössä
+                </string>
+                <string name="flip_popup_default_description" >Application is active \nat the front screen
+                </string>
+            </file>
+            <file
+                path="/Users/khankuan/Desktop/yotacast/android/YotaCast/yotaphone_titanium_sdk/res/values-fr/strings.xml"
+                qualifiers="fr" >
+                <string name="flip_popup_default_title" >Retournez votre téléphone
+                </string>
+                <string name="flip_popup_default_description" >L\'application est active\nsur l\'écran couleur
+                </string>
+                <string
+                    name="application_is_updated_on_bs"
+                    comment="Please split the string in more lines if it is longer then 35 symbols" >L\'application a été mise à jour\nsur l\'écran Always-on
+                </string>
+                <string name="loading_data" >Chargement des données...
+                </string>
+            </file>
+            <file
+                path="/Users/khankuan/Desktop/yotacast/android/YotaCast/yotaphone_titanium_sdk/res/values-hi/strings.xml"
+                qualifiers="hi" >
+                <string
+                    name="application_is_updated_on_bs"
+                    comment="Please split the string in more lines if it is longer then 35 symbols" >एप्लिकेशन\nalways-on डिस्प्ले पर अपडेट कर दिया गया है
+                </string>
+                <string name="loading_data" >डेटा लोड हो रहा है...
+                </string>
+                <string name="flip_popup_default_description" >एप्लिकेशन\nरंगीन डिस्प्ले पर सक्रिय है
+                </string>
+                <string name="flip_popup_default_title" >अपना फ़ोन फ़्लिप करें
+                </string>
+            </file>
+            <file
+                path="/Users/khankuan/Desktop/yotacast/android/YotaCast/yotaphone_titanium_sdk/res/values-hr/strings.xml"
+                qualifiers="hr" >
+                <string name="flip_popup_default_title" >Flip your phone
+                </string>
+                <string name="loading_data" >Loading data...
+                </string>
+                <string name="flip_popup_default_description" >Application is active \nat the front screen
+                </string>
+                <string
+                    name="application_is_updated_on_bs"
+                    comment="Please split the string in more lines if it is longer then 35 symbols" >Application is updated on Back Screen
+                </string>
+            </file>
+            <file
+                path="/Users/khankuan/Desktop/yotacast/android/YotaCast/yotaphone_titanium_sdk/res/values-hu/strings.xml"
+                qualifiers="hu" >
+                <string name="loading_data" >Loading data...
+                </string>
+                <string
+                    name="application_is_updated_on_bs"
+                    comment="Please split the string in more lines if it is longer then 35 symbols" >Application is updated on Back Screen
+                </string>
+                <string name="flip_popup_default_title" >Flip your phone
+                </string>
+                <string name="flip_popup_default_description" >Application is active \nat the front screen
+                </string>
+            </file>
+            <file
+                path="/Users/khankuan/Desktop/yotacast/android/YotaCast/yotaphone_titanium_sdk/res/values-id/strings.xml"
+                qualifiers="id" >
+                <string
+                    name="application_is_updated_on_bs"
+                    comment="Please split the string in more lines if it is longer then 35 symbols" >Aplikasi telah diperbarui\ndi layar Always-on
+                </string>
+                <string name="loading_data" >Memuat data...
+                </string>
+                <string name="flip_popup_default_title" >Balik posisi ponsel Anda
+                </string>
+                <string name="flip_popup_default_description" >Aplikasi sedang aktif\ndi layar warna
+                </string>
+            </file>
+            <file
+                path="/Users/khankuan/Desktop/yotacast/android/YotaCast/yotaphone_titanium_sdk/res/values-it/strings.xml"
+                qualifiers="it" >
+                <string name="flip_popup_default_description" >L\'applicazione è attiva\nsul display a colori
+                </string>
+                <string
+                    name="application_is_updated_on_bs"
+                    comment="Please split the string in more lines if it is longer then 35 symbols" >L\'applicazione è stata aggiornata\nsul display always-on
+                </string>
+                <string name="loading_data" >Caricamento dati...
+                </string>
+                <string name="flip_popup_default_title" >Capovolgi il telefono
+                </string>
+            </file>
+            <file
+                path="/Users/khankuan/Desktop/yotacast/android/YotaCast/yotaphone_titanium_sdk/res/values-kk/strings.xml"
+                qualifiers="kk" >
+                <string name="loading_data" >Loading data...
+                </string>
+                <string
+                    name="application_is_updated_on_bs"
+                    comment="Please split the string in more lines if it is longer then 35 symbols" >Application is updated on Back Screen
+                </string>
+                <string name="flip_popup_default_description" >Application is active \nat the front screen
+                </string>
+                <string name="flip_popup_default_title" >Flip your phone
+                </string>
+            </file>
+            <file
+                path="/Users/khankuan/Desktop/yotacast/android/YotaCast/yotaphone_titanium_sdk/res/values-ms/strings.xml"
+                qualifiers="ms" >
+                <string name="flip_popup_default_description" >Aplikasi aktif\npada paparan yang berwarna
+                </string>
+                <string
+                    name="application_is_updated_on_bs"
+                    comment="Please split the string in more lines if it is longer then 35 symbols" >Aplikasi telah dikemas kini\npada paparan sentiasa hidup
+                </string>
+                <string name="flip_popup_default_title" >Terbalikkan telefon anda
+                </string>
+                <string name="loading_data" >Memuat data...
+                </string>
+            </file>
+            <file
+                path="/Users/khankuan/Desktop/yotacast/android/YotaCast/yotaphone_titanium_sdk/res/values-nl/strings.xml"
+                qualifiers="nl" >
+                <string
+                    name="application_is_updated_on_bs"
+                    comment="Please split the string in more lines if it is longer then 35 symbols" >De toepassing is bijgewerkt\nop het Always-on-scherm
+                </string>
+                <string name="flip_popup_default_title" >Uw telefoon omdraaien
+                </string>
+                <string name="flip_popup_default_description" >De toepassing is actief\nop het kleurenscherm
+                </string>
+                <string name="loading_data" >Gegevens laden...
+                </string>
+            </file>
+            <file
+                path="/Users/khankuan/Desktop/yotacast/android/YotaCast/yotaphone_titanium_sdk/res/values-no/strings.xml"
+                qualifiers="no" >
+                <string name="flip_popup_default_title" >Flip your phone
+                </string>
+                <string name="loading_data" >Loading data...
+                </string>
+                <string name="flip_popup_default_description" >Application is active \nat the front screen
+                </string>
+                <string
+                    name="application_is_updated_on_bs"
+                    comment="Please split the string in more lines if it is longer then 35 symbols" >Application is updated on Back Screen
+                </string>
+            </file>
+            <file
+                path="/Users/khankuan/Desktop/yotacast/android/YotaCast/yotaphone_titanium_sdk/res/values-pl/strings.xml"
+                qualifiers="pl" >
+                <string name="flip_popup_default_title" >Odwróć telefon
+                </string>
+                <string name="loading_data" >Wczytywanie danych...
+                </string>
+                <string name="flip_popup_default_description" >Aplikacja jest aktywna\nna kolorowym wyświetlaczu
+                </string>
+                <string
+                    name="application_is_updated_on_bs"
+                    comment="Please split the string in more lines if it is longer then 35 symbols" >Zaktualizowano aplikację\nna wyświetlaczu always-on
+                </string>
+            </file>
+            <file
+                path="/Users/khankuan/Desktop/yotacast/android/YotaCast/yotaphone_titanium_sdk/res/values-pt-rPT/strings.xml"
+                qualifiers="pt-rPT" >
+                <string name="flip_popup_default_description" >A aplicação está ativa\nno ecrã a cores
+                </string>
+                <string name="flip_popup_default_title" >Virar o telefone ao contrário
+                </string>
+                <string
+                    name="application_is_updated_on_bs"
+                    comment="Please split the string in more lines if it is longer then 35 symbols" >A aplicação foi atualizada\nno ecrã always-on
+                </string>
+                <string name="loading_data" >A carregar dados...
+                </string>
+            </file>
+            <file
+                path="/Users/khankuan/Desktop/yotacast/android/YotaCast/yotaphone_titanium_sdk/res/values-ro/strings.xml"
+                qualifiers="ro" >
+                <string
+                    name="application_is_updated_on_bs"
+                    comment="Please split the string in more lines if it is longer then 35 symbols" >Aplicaţia a fost actualizată\npe ecranul always-on
+                </string>
+                <string name="flip_popup_default_title" >Întoarceţi telefonul
+                </string>
+                <string name="flip_popup_default_description" >Aplicaţia este activă\npe ecranul color
+                </string>
+                <string name="loading_data" >Datele se încarcă...
+                </string>
+            </file>
+            <file
+                path="/Users/khankuan/Desktop/yotacast/android/YotaCast/yotaphone_titanium_sdk/res/values-ru/strings.xml"
+                qualifiers="ru" >
+                <string name="flip_popup_default_description" >Приложение активно\nна цветном дисплее
+                </string>
+                <string name="flip_popup_default_title" >Переверните телефон
+                </string>
+                <string
+                    name="application_is_updated_on_bs"
+                    comment="Please split the string in more lines if it is longer then 35 symbols" >Приложение было обновлено\nна дисплее always-on
+                </string>
+                <string name="loading_data" >Загрузка данных...
+                </string>
+            </file>
+            <file
+                path="/Users/khankuan/Desktop/yotacast/android/YotaCast/yotaphone_titanium_sdk/res/values-sl/strings.xml"
+                qualifiers="sl" >
+                <string name="flip_popup_default_description" >Application is active \nat the front screen
+                </string>
+                <string name="loading_data" >Loading data...
+                </string>
+                <string name="flip_popup_default_title" >Flip your phone
+                </string>
+                <string
+                    name="application_is_updated_on_bs"
+                    comment="Please split the string in more lines if it is longer then 35 symbols" >Application is updated on Back Screen
+                </string>
+            </file>
+            <file
+                path="/Users/khankuan/Desktop/yotacast/android/YotaCast/yotaphone_titanium_sdk/res/values-sv-rSE/strings.xml"
+                qualifiers="sv-rSE" >
+                <string
+                    name="application_is_updated_on_bs"
+                    comment="Please split the string in more lines if it is longer then 35 symbols" >Programmet har uppdaterats\npå always-on-skärmen
+                </string>
+                <string name="flip_popup_default_title" >Vänd telefonen
+                </string>
+                <string name="loading_data" >Läser in data...
+                </string>
+                <string name="flip_popup_default_description" >Programmet är aktivt\npå färgskärmen
+                </string>
+            </file>
+            <file
+                path="/Users/khankuan/Desktop/yotacast/android/YotaCast/yotaphone_titanium_sdk/res/values-th/strings.xml"
+                qualifiers="th" >
+                <string name="loading_data" >กำลังโหลดข้อมูล...
+                </string>
+                <string name="flip_popup_default_title" >โปรดพลิกโทรศัพท์
+                </string>
+                <string
+                    name="application_is_updated_on_bs"
+                    comment="Please split the string in more lines if it is longer then 35 symbols" >แอปพลิเคชันได้รับการอัพเดท\nบนหน้าจอแบบ Always-on แล้ว
+                </string>
+                <string name="flip_popup_default_description" >แอปพลิเคชันจะแสดงผล\nบนหน้าจอสี
+                </string>
+            </file>
+            <file
+                path="/Users/khankuan/Desktop/yotacast/android/YotaCast/yotaphone_titanium_sdk/res/values-tr/strings.xml"
+                qualifiers="tr" >
+                <string
+                    name="application_is_updated_on_bs"
+                    comment="Please split the string in more lines if it is longer then 35 symbols" >Uygulama always-on ekranda\ngüncellendi
+                </string>
+                <string name="loading_data" >Veri yükleniyor...
+                </string>
+                <string name="flip_popup_default_description" >Uygulamayı renkli ekranda\netkin
+                </string>
+                <string name="flip_popup_default_title" >Telefonunuzu ters çevirin
+                </string>
+            </file>
+            <file
+                path="/Users/khankuan/Desktop/yotacast/android/YotaCast/yotaphone_titanium_sdk/res/values-uk/strings.xml"
+                qualifiers="uk" >
+                <string
+                    name="application_is_updated_on_bs"
+                    comment="Please split the string in more lines if it is longer then 35 symbols" >Програму оновлено\nна дисплеї always-on
+                </string>
+                <string name="flip_popup_default_title" >Переверніть телефон
+                </string>
+                <string name="flip_popup_default_description" >Програму запущено\nна кольоровому дисплеї
+                </string>
+                <string name="loading_data" >Завантаження даних…
+                </string>
+            </file>
+            <file
+                path="/Users/khankuan/Desktop/yotacast/android/YotaCast/yotaphone_titanium_sdk/res/values-vi/strings.xml"
+                qualifiers="vi" >
+                <string name="flip_popup_default_description" >Ứng dụng đang hoạt động\ntrên màn hình màu
+                </string>
+                <string name="flip_popup_default_title" >Lật điện thoại
+                </string>
+                <string name="loading_data" >Đang tải dữ liệu...
+                </string>
+                <string
+                    name="application_is_updated_on_bs"
+                    comment="Please split the string in more lines if it is longer then 35 symbols" >Ứng dụng đã được cập nhật\ntrên màn hình always-on
+                </string>
+            </file>
+            <file
+                path="/Users/khankuan/Desktop/yotacast/android/YotaCast/yotaphone_titanium_sdk/res/values-zh-rCN/strings.xml"
+                qualifiers="zh-rCN" >
+                <string name="loading_data" >正在加载数据...
+                </string>
+                <string
+                    name="application_is_updated_on_bs"
+                    comment="Please split the string in more lines if it is longer then 35 symbols" >应用程序已在 always-on 显示屏\n上进行了更新
+                </string>
+                <string name="flip_popup_default_title" >翻转手机
+                </string>
+                <string name="flip_popup_default_description" >应用程序正在彩色显示屏\n上运行
+                </string>
+            </file>
+        </source>
+        <source path="/Users/khankuan/Desktop/yotacast/android/YotaCast/yotaphone_titanium_sdk/build/generated/res/rs/debug" />
+        <source path="/Users/khankuan/Desktop/yotacast/android/YotaCast/yotaphone_titanium_sdk/build/generated/res/generated/debug" />
+    </dataSet>
+    <dataSet config="debug" >
+        <source path="/Users/khankuan/Desktop/yotacast/android/YotaCast/yotaphone_titanium_sdk/build-types/debug/res" />
+    </dataSet>
+
+</merger>

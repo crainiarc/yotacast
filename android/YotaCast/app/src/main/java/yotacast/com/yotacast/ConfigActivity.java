@@ -23,14 +23,6 @@ public class ConfigActivity extends Activity {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         Log.d("yota", prefs.getBoolean("running", true)+"");
 
-        //  Check action
-        String action = getIntent().getAction();
-        if (action.equals(YotaCastWidget.ACTION_UPDATE_CLICK)){
-            SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).edit();
-            editor.putBoolean("running", !prefs.getBoolean("running", false));
-            editor.commit();
-        }
-
 
 
         //  First Time
@@ -117,22 +109,42 @@ public class ConfigActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_config);
 
+
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        Log.d("yota", prefs.getBoolean("running", true)+"");
+
+        //  Check action
+        String action = getIntent().getAction();
+        if (action.equals(YotaCastWidget.ACTION_UPDATE_CLICK)){
+            SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).edit();
+            editor.putBoolean("running", !prefs.getBoolean("running", false));
+            editor.commit();
+            updateService();
+            finish();
+            return;
+        }
+
     }
 
 
     public void setService(View v){
         Switch s = (Switch) v;
-        if (s.isChecked()){
-            startService(new Intent(this, YotaCastService.class));
-        } else {
-            stopService(new Intent(this, YotaCastService.class));
-        }
 
         SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).edit();
         editor.putBoolean("running", s.isChecked());
         editor.commit();
+
+        updateService();
     }
 
+    public void updateService(){
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        if (prefs.getBoolean("running", false)){
+            startService(new Intent(this, YotaCastService.class));
+        } else {
+            stopService(new Intent(this, YotaCastService.class));
+        }
+    }
 
     public void restartService(){
         stopService(new Intent(this, YotaCastService.class));
