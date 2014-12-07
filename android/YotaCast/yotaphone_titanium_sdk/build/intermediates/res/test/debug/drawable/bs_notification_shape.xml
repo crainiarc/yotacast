@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <corners android:radius="7dp" />
+
+    <solid android:color="#ffffff" />
+
+</shape><!-- From: file:/Users/khankuan/Desktop/yotacast/android/YotaCast/yotaphone_titanium_sdk/res/drawable/bs_notification_shape.xml --><!-- From: file:/Users/khankuan/Desktop/yotacast/android/YotaCast/yotaphone_titanium_sdk/build/intermediates/bundles/debug/res/drawable/bs_notification_shape.xml -->

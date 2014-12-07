@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- From: file:/Users/khankuan/Desktop/yotacast/android/YotaCast/yotaphone_titanium_sdk/build/intermediates/bundles/debug/res/values-el/values.xml -->
+    <eat-comment />
+
+    <string name="application_is_updated_on_bs" comment="Please split the string in more lines if it is longer then 35 symbols">Η εφαρμογή ενημερώθηκε\nστην οθόνη always-on</string>
+    <string name="flip_popup_default_description">Η εφαρμογή είναι ενεργή\nστην έγχρωμη οθόνη</string>
+    <string name="flip_popup_default_title">Γυρίστε το τηλέφωνό σας από την άλλη πλευρά</string>
+    <string name="loading_data">Φόρτωση δεδομένων...</string>
+
+</resources>

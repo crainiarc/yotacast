@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- From: file:/Users/khankuan/Desktop/yotacast/android/YotaCast/yotaphone_titanium_sdk/res/values-bg/strings.xml -->
+    <eat-comment />
+
+    <string name="application_is_updated_on_bs" comment="Please split the string in more lines if it is longer then 35 symbols">Application is updated on Back Screen</string>
+    <string name="flip_popup_default_description">Application is active \nat the front screen</string>
+    <string name="flip_popup_default_title">Flip your phone</string>
+    <string name="loading_data">Loading data...</string>
+
+</resources>

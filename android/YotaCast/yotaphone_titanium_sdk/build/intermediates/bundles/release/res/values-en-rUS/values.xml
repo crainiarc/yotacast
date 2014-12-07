@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- From: file:/Users/khankuan/Desktop/yotacast/android/YotaCast/yotaphone_titanium_sdk/res/values-en-rUS/strings.xml -->
+    <eat-comment />
+
+    <string name="application_is_updated_on_bs" comment="Please split the string in more lines if it is longer then 35 symbols">Application has been updated\non always-on display</string>
+    <string name="flip_popup_default_description">Application is active\non the color display</string>
+    <string name="flip_popup_default_title">Flip over your phone</string>
+    <string name="loading_data">Loading data...</string>
+
+</resources>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- From: file:/Users/khankuan/Desktop/yotacast/android/YotaCast/yotaphone_titanium_sdk/res/values-es-rES/strings.xml -->
+    <eat-comment />
+
+    <string name="application_is_updated_on_bs" comment="Please split the string in more lines if it is longer then 35 symbols">Aplicación actualizada en\nla pantalla always-on</string>
+    <string name="flip_popup_default_description">Aplicación activa\nen la pantalla de color</string>
+    <string name="flip_popup_default_title">Da la vuelta al teléfono</string>
+    <string name="loading_data">Cargando datos...</string>
+
+</resources>

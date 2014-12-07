@@ -1,0 +1,75 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="yodacast.com.yotacast.ConfigActivity">
+
+
+    <Switch
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="YotaCast"
+        android:id="@+id/yotaSwitch"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:checked="false"
+        android:onClick="setService"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/endpointUrl"
+        android:inputType="textUri"
+        android:layout_toEndOf="@+id/textView2"
+        android:layout_below="@+id/textView2"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Endpoint"
+        android:id="@+id/textView2"
+        android:layout_alignParentStart="true"
+        android:gravity="bottom"
+        android:paddingTop="36dp"
+        android:layout_below="@+id/yotaSwitch" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Update Frequency"
+        android:id="@+id/textView"
+        android:gravity="bottom"
+        android:paddingTop="36dp"
+        android:layout_below="@+id/endpointUrl"
+        android:layout_alignParentStart="true" />
+
+    <SeekBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/updateFreq"
+        android:layout_below="@+id/textView"
+        android:layout_alignParentStart="true"
+        android:paddingTop="4dp"
+        android:layout_alignParentEnd="true"
+        android:max="10"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Small Text 222"
+        android:id="@+id/freqText"
+        android:layout_alignParentEnd="true"
+        android:textColor="#09C"
+        android:layout_above="@+id/updateFreq" />
+
+</RelativeLayout>
