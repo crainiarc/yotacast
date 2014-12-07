@@ -36,6 +36,10 @@ play_alert_sound = False
 def index():
   return render_template('index.html')
 
+@app.route('/cast')
+def cast():
+  return render_template('cast.html')
+
 @app.route('/upload', methods=['POST'])        
 def upload_file():
     data = json.loads(request.data)
@@ -116,9 +120,18 @@ def latest_image():
 
 @app.route('/play_alert', methods=['POST'])        
 def play_alert():
-    data = json.loads(request.data)
     global play_alert_sound
-    play_alert_sound = data['play_alert']
+    data = json.loads(request.data)
+    play_alert_sound = data['play_alert'] if data else True
+    return json.dumps({
+        'status':'success',
+        'play_alert': play_alert_sound
+    })
+
+@app.route('/stop_alert', methods=['POST'])        
+def stop_alert():
+    global play_alert_sound
+    play_alert_sound = False
     return json.dumps({
         'status':'success',
         'play_alert': play_alert_sound

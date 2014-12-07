@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>YotaCast</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/normalize.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/flatly.min.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/animations.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+        <!-- Latest compiled and minified CSS -->
+        <script src="{{ url_for('static', filename='js/vendor/modernizr-2.6.2.min.js') }}"></script>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+        
+    </head>
+    <body ng-app="CameraApp" ng-controller="CameraController" class="main-page">
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <!-- Add your site or application content here -->
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div role="tabpanel">
+                    <!-- Nav tabs -->
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" class="active">
+                                <a href="#camera" aria-controls="plane" role="tab" data-toggle="tab">Camera</a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#gallery" aria-controls="planview" role="tab" data-toggle="tab">Gallery</a>
+                            </li>
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane active" id="camera">
+                                <div class="panel panel-default main-section">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">Camera</h3>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-md-9">
+                                                <video class="video-container"></video>
+                                                <canvas class="hidden-canvas"></canvas>                                            
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="panel panel-default">
+                                                    <div class="panel-heading">
+                                                        <h3 class="panel-title">YotaCast Settings</h3>
+                                                    </div>
+                                                    <div class="panel-body">
+                                                        <div class="form-group">
+                                                            <div>
+                                                                <label class="control-label">Mode: [[ mode | capitalize ]]</label>
+                                                            </div>
+                                                            <div class="btn-group" role="group">                        
+                                                                <button type="button" class="btn btn-default" ng-click="changeMode('burglar')">Burglar</button>
+                                                                <button type="button" class="btn btn-default" ng-click="changeMode('lullaby')">Lullaby</button>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="control-label">
+                                                                Update Interval: <span class="update-interval"> [[ timeoutInterval ]]s</span>
+                                                            </label>
+                                                            <div class="input-group">
+                                                                
+                                                            </div>
+                                                            <div id="slider"></div>
+                                                        </div>
+                                                        <div>
+                                                        <button class="btn [[ {'true': 'btn-success', 'false': 'btn-danger'}[!isCasting] ]]" ng-click="togglePolling()"><span>[[ {'true': 'Start', 'false': 'Stop'}[!isCasting] ]]</span> Casting</button>
+                                                        <!-- <button class="btn btn-default" ng-click="sendImage()">Send Current Image</button> -->
+                                                        <!-- <button class="btn btn-default" ng-click="getImage()">Get Image</button> -->
+                                                        </div>
+                                                        <br>
+                                                        <div>
+                                                        <button class="btn btn-warning" ng-click="activateAlert()">Activate alert</button>
+                                                        </div>
+                                                        <br>
+                                                        <div>
+                                                        <button class="btn btn-info" ng-click="stopAlert()">Stop alert</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="gallery">
+                                <div class="panel panel-default main-section">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">Snapshots Gallery <button class="pull-right btn [[ {'true': 'btn-success', 'false': 'btn-danger'}[!isCasting] ]] btn-xs" ng-click="togglePolling()"><span>[[ {'true': 'Start', 'false': 'Stop'}[!isCasting] ]]</span> Casting</button></h3>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <ul class="snapshots-gallery">
+                                                    <li ng-repeat="snapshot in snapshots" class="snapshot-listing [[ {'true': 'movement'}[snapshot.movement] ]]">
+                                                        <img ng-src="/static/snapshots/[[snapshot.equalized_image]]">
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <script src="{{ url_for('static', filename='js/vendor/jquery-1.10.2.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/vendor/jquery-ui.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/vendor/bootstrap.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/vendor/angular.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/vendor/angular-animate.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/vendor/fabric.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/plugins.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    </body>
+</html>
