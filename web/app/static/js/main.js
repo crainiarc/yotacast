@@ -141,6 +141,7 @@ function CameraController ($scope, $http, $interval) {
 
   function getProcessedImage () {
     $http.get('/latest_image').success(function(data, status, headers, config) {
+      data.movement = data.diff > 5;
       $scope.snapshots.unshift(data);
       if (data.play_alert) {
         audio.play();

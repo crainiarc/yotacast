@@ -71,7 +71,7 @@ def upload_file():
             # cv2.imwrite(grayscale_image_small_filepath, grayscale_image_small)
 
             global previous_grayscale_img
-            movement = False
+            average_diff = 0
             if previous_grayscale_img is not None:
                 diff_img = cv2.absdiff(previous_grayscale_img, grayscale_image)
                 total_diff = sum([sum(row) for row in diff_img])
@@ -79,8 +79,6 @@ def upload_file():
                 height = diff_img.shape[1]
                 total_pixels = width * height
                 average_diff = float(total_diff) / total_pixels
-                if average_diff > MOVEMENT_THRESHOLD:
-                    movement = True
             previous_grayscale_img = grayscale_image
 
             # Save equalized image as <timestamp>-equalized.jpg
@@ -97,7 +95,7 @@ def upload_file():
                     'raw_image': raw_image_filename,
                     'grayscale_image': grayscale_image_filename,
                     'equalized_image': equalized_image_filename,
-                    'movement': movement,
+                    'diff': average_diff,
                     'play_alert': play_alert_sound
                 }))
         else:
