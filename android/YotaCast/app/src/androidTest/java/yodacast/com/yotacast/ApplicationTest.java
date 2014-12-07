@@ -1,4 +1,4 @@
-package yodacast.com.yotacast;
+package yotacast.com.yotacast;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

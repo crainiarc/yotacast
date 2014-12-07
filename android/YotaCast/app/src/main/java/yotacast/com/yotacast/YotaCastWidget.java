@@ -21,6 +21,15 @@ public class YotaCastWidget extends AppWidgetProvider {
     public static final String ACTION_ALERT_CLICK =
             "yotacast.com.yotacast.action.ALERT_CLICK";
 
+    public static final String ACTION_PREV_CLICK =
+            "yotacast.com.yotacast.action.PREV_CLICK";
+
+    public static final String ACTION_FWD_CLICK =
+            "yotacast.com.yotacast.action.FWD_CLICK";
+
+    public static final String ACTION_BACK_CLICK =
+            "yotacast.com.yotacast.action.BACK_CLICK";
+
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
         // There may be multiple widgets active, so update all of them
@@ -43,21 +52,42 @@ public class YotaCastWidget extends AppWidgetProvider {
 
     void updateAppWidget(Context context, AppWidgetManager appWidgetManager,
                          int appWidgetId) {
-        CharSequence widgetText = context.getString(R.string.appwidget_text);
+
         // Construct the RemoteViews object
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.yotacast);
 
         //  Start/Stop
         PendingIntent pendingIntent;
-        Intent intent = new Intent(context, ConfigActivity.class);
+        Intent intent = new Intent(context, MainActivity.class);
         intent.setAction(ACTION_UPDATE_CLICK);
         pendingIntent =  PendingIntent.getActivity(context, 0, intent, 0);
         views.setOnClickPendingIntent(R.id.buttonPlay, pendingIntent);
 
+        //  PREV
+        PendingIntent pendingIntentPrev;
+        Intent intentPrev = new Intent(context, MainActivity.class);
+        intentPrev.setAction(ACTION_PREV_CLICK);
+        pendingIntentPrev =  PendingIntent.getActivity(context, 0, intentPrev, 0);
+        views.setOnClickPendingIntent(R.id.buttonPrev, pendingIntentPrev);
+
+        //  FWD
+        PendingIntent pendingIntentFwd;
+        Intent intentFwd = new Intent(context, MainActivity.class);
+        intentFwd.setAction(ACTION_FWD_CLICK);
+        pendingIntentFwd =  PendingIntent.getActivity(context, 0, intentFwd, 0);
+        views.setOnClickPendingIntent(R.id.buttonFwd, pendingIntentFwd);
+
+        //  BACK
+        PendingIntent pendingIntentBack;
+        Intent intentBack = new Intent(context, MainActivity.class);
+        intentBack.setAction(ACTION_BACK_CLICK);
+        pendingIntentBack =  PendingIntent.getActivity(context, 0, intentBack, 0);
+        views.setOnClickPendingIntent(R.id.buttonBack, pendingIntentBack);
+
 
         //  Hide alert
         PendingIntent pendingIntentAlert;
-        Intent intentAlert = new Intent(context, ConfigActivity.class);
+        Intent intentAlert = new Intent(context, MainActivity.class);
         intentAlert.setAction(ACTION_ALERT_CLICK);
         pendingIntentAlert =  PendingIntent.getActivity(context, 0, intentAlert, 0);
         views.setOnClickPendingIntent(R.id.alert, pendingIntentAlert);

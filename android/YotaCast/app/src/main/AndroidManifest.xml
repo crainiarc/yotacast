@@ -47,6 +47,11 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".MainActivity"
+            android:theme="@android:style/Theme.NoDisplay" >
+        </activity>
+
 
     </application>
 
