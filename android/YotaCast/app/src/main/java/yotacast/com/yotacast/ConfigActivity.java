@@ -31,7 +31,7 @@ public class ConfigActivity extends Activity {
         //  First Time
         if (prefs.getString("endpoint", "null").equals("null")){
             SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).edit();
-            editor.putString("endpoint", "http://localhost:8080/latest_image");
+            editor.putString("endpoint", "http://localhost:8080");
             editor.putInt("freq", 5000);
             editor.putBoolean("running", true);
             editor.commit();
@@ -112,32 +112,7 @@ public class ConfigActivity extends Activity {
         super.onCreate(savedInstanceState);
 
 
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        Log.d("yota", prefs.getBoolean("running", true)+"");
-
-        //  Check action
-        String action = getIntent().getAction();
-        if (action.equals(YotaCastWidget.ACTION_UPDATE_CLICK)){
-            SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).edit();
-            editor.putBoolean("running", !prefs.getBoolean("running", false));
-            editor.commit();
-            updateService();
-            finish();
-            return;
-        } else if (action.equals(YotaCastWidget.ACTION_ALERT_CLICK)){
-            hideAlert();
-            finish();
-            return;
-        }
-
-
-        //  Check action, if action, then exit
-        if (action != null && action.length() > 0){
-            finish();
-            return;
-        } else
-            setContentView(R.layout.activity_config);
-
+        setContentView(R.layout.activity_config);
     }
 
 
