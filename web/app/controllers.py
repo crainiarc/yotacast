@@ -6,6 +6,7 @@ from app import app
 import numpy as np
 import time
 import datetime
+from datetime import datetime as time2
 import glob
 
 def module_exists(module_name):
@@ -24,7 +25,7 @@ if has_cv2:
 import base64
 
 UPLOAD_FOLDER = 'app/static/snapshots/'
-MOVEMENT_THRESHOLD = 7
+MOVEMENT_THRESHOLD = 15
 RESIZE_SCALE = 0.25
 
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
@@ -95,6 +96,7 @@ def upload_file():
             # Save latest.json
             with open(os.path.join(app.config['UPLOAD_FOLDER'], 'latest.json'), 'w+') as f:
                 f.write(json.dumps({
+                    'timestamp': time2.now().strftime('%Y-%m-%d %H:%M:%S'),
                     'raw_string': base64_string,
                     'raw_image': raw_image_filename,
                     'grayscale_image': grayscale_image_filename,
@@ -105,6 +107,7 @@ def upload_file():
         else:
             with open(os.path.join(app.config['UPLOAD_FOLDER'], 'latest.json'), 'w+') as f:
                 f.write(json.dumps({
+                    'timestamp': time2.now().strftime('%Y-%m-%d %H:%M:%S'),
                     'raw_string': base64_string,
                     'raw_image': raw_image_filename,
                     'play_alert': play_alert_sound

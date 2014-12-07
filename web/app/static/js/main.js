@@ -26,7 +26,7 @@ function CameraController ($scope, $http, $interval) {
   audio.loop = true;
 
   $scope.snapshots = [];
-
+  $scope.movementThreshold = 5;
   $scope.isCasting = false;
   $scope.timeoutInterval = 1;
 
@@ -43,6 +43,15 @@ function CameraController ($scope, $http, $interval) {
 
     slide: function(event, ui) {
       $scope.$apply(function () {$scope.timeoutInterval = ui.value;});
+    }
+  });
+
+  $('#threshold-slider').slider({
+    min: 1,
+    max: 60,
+
+    slide: function(event, ui) {
+      $scope.$apply(function () {$scope.movementThreshold = ui.value;});
     }
   });
 
@@ -137,14 +146,14 @@ function CameraController ($scope, $http, $interval) {
 
   function getProcessedImage () {
     $http.get('/latest_image').success(function(data, status, headers, config) {
-      data.movement = data.diff > 5;
+      data.movement = data.diff > $scope.movementThreshold;
       $scope.snapshots.unshift(data);
+      console.log(data.play_alert);
       if (data.play_alert) {
         audio.play();
       } else {
         audio.pause();
       }
-      $scope.$apply();
     }).error(function(data, status, headers, config) {
       alert('Post failed');
     });
