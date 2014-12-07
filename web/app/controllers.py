@@ -121,8 +121,7 @@ def latest_image():
 @app.route('/play_alert', methods=['POST'])        
 def play_alert():
     global play_alert_sound
-    data = json.loads(request.data)
-    play_alert_sound = data['play_alert'] if data else True
+    play_alert_sound = True
     return json.dumps({
         'status':'success',
         'play_alert': play_alert_sound
