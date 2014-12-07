@@ -14,6 +14,7 @@
         <link rel="stylesheet" href="{{ url_for('static', filename='css/normalize.css') }}">
         <link rel="stylesheet" href="{{ url_for('static', filename='css/flatly.min.css') }}">
         <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/animations.css') }}">
         <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
         <!-- Latest compiled and minified CSS -->
         <script src="{{ url_for('static', filename='js/vendor/modernizr-2.6.2.min.js') }}"></script>
@@ -98,7 +99,7 @@
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <ul class="snapshots-gallery">
-                                                    <li ng-repeat="snapshot in snapshots" class="[[ {'true': 'movement'}[snapshot.movement] ]]">
+                                                    <li ng-repeat="snapshot in snapshots" class="snapshot-listing [[ {'true': 'movement'}[snapshot.movement] ]]">
                                                         <img ng-src="/static/snapshots/[[snapshot.equalized_image]]">
                                                     </li>
                                                 </ul>
@@ -116,7 +117,8 @@
         <script src="{{ url_for('static', filename='js/vendor/jquery-1.10.2.min.js') }}"></script>
         <script src="{{ url_for('static', filename='js/vendor/jquery-ui.js') }}"></script>
         <script src="{{ url_for('static', filename='js/vendor/bootstrap.min.js') }}"></script>
-        <script src="{{ url_for('static', filename='js/vendor/angular.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/vendor/angular.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/vendor/angular-animate.min.js') }}"></script>
         <script src="{{ url_for('static', filename='js/vendor/fabric.min.js') }}"></script>
         <script src="{{ url_for('static', filename='js/plugins.js') }}"></script>
         <script src="{{ url_for('static', filename='js/main.js') }}"></script>

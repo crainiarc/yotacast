@@ -3,6 +3,7 @@ import json
 
 from flask import Flask, render_template, request, make_response
 from app import app
+import numpy as np
 import time
 import datetime
 import glob
@@ -24,6 +25,7 @@ import base64
 
 UPLOAD_FOLDER = 'app/static/snapshots/'
 MOVEMENT_THRESHOLD = 7
+RESIZE_SCALE = 0.25
 
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
@@ -61,6 +63,12 @@ def upload_file():
             grayscale_image_filename = str(no_microseconds_time) + '-grayscale.jpg'
             grayscale_image_filepath = os.path.join(app.config['UPLOAD_FOLDER'], grayscale_image_filename)
             cv2.imwrite(grayscale_image_filepath, grayscale_image)
+
+            # grayscale_image_small = np.copy(grayscale_image)
+            # cv2.resize(grayscale_image, grayscale_image_small, Size(0, 0), RESIZE_SCALE, RESIZE_SCALE)
+            # grayscale_image_small_filename = str(no_microseconds_time) + '-grayscale-small.jpg'
+            # grayscale_image_small_filepath = os.path.join(app.config['UPLOAD_FOLDER'], grayscale_image_small_filename)
+            # cv2.imwrite(grayscale_image_small_filepath, grayscale_image_small)
 
             global previous_grayscale_img
             movement = False

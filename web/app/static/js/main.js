@@ -1,4 +1,4 @@
-angular.module('CameraApp', []).config(function ($interpolateProvider) {
+angular.module('CameraApp', ['ngAnimate']).config(function ($interpolateProvider) {
   $interpolateProvider.startSymbol('[[').endSymbol(']]');
 }).filter('capitalize', function() {
   return function(input, all) {
