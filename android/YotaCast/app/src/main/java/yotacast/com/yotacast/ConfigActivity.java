@@ -141,15 +141,5 @@ public class ConfigActivity extends Activity {
     }
 
 
-    public void hideAlert(){
-        RemoteViews view = new RemoteViews(getPackageName(), R.layout.yotacast);
-        view.setViewVisibility(R.id.alert, View.INVISIBLE);
-
-        // Push update for this widget to the home screen
-        ComponentName thisWidget = new ComponentName(this, YotaCastWidget.class);
-        AppWidgetManager manager = AppWidgetManager.getInstance(this);
-        manager.updateAppWidget(thisWidget, view);
-    }
-
 
 }

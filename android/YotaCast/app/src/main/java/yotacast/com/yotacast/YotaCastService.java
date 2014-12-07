@@ -159,7 +159,12 @@ public class YotaCastService extends Service {
             img = json.getString("raw_string");
 
             alert = json.getBoolean("play_alert");
-            double diffValue = json.getDouble("diff");
+            double diffValue = 0;
+            try {
+                diffValue = json.getDouble("diff");
+            } catch (Exception e){
+
+            }
             if (diffValue > 30)
                 alert = true;
 
@@ -168,16 +173,7 @@ public class YotaCastService extends Service {
             Bitmap bitmap  = BitmapFactory.decodeStream(inputStream);
             updateView(bitmap);
 
-
-
-            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-            SharedPreferences.Editor editor = prefs.edit();
-            editor.putBoolean("alerted", alert);
-            editor.commit();
-
-
-            boolean alerted = prefs.getBoolean("alerted", false);
-            if (alerted)
+            if (alert)
                 showAlert();
             else
                 hideAlert();
@@ -285,16 +281,10 @@ public class YotaCastService extends Service {
     boolean isWhite = false;
     public void showAlert(){
 
-
         RemoteViews view = new RemoteViews(getPackageName(), R.layout.yotacast);
-        view.setViewVisibility(R.id.alert, View.VISIBLE);
-        view.setTextViewText(R.id.alert, "Stop Alert");
         if (isWhite) {
-            //view.setTextViewText(R.id.alert, "ALERT");
             view.setViewVisibility(R.id.alertText, View.INVISIBLE);
         } else {
-            //view.setTextColor(R.id.alert, Color.WHITE);
-            //view.setTextViewText(R.id.alert, "!!! ALERT !!!");
             view.setViewVisibility(R.id.alertText, View.VISIBLE);
         }
         isWhite = !isWhite;
@@ -303,7 +293,6 @@ public class YotaCastService extends Service {
         ComponentName thisWidget = new ComponentName(YotaCastService.this, YotaCastWidget.class);
         AppWidgetManager manager = AppWidgetManager.getInstance(YotaCastService.this);
         manager.updateAppWidget(thisWidget, view);
-
 
         Log.d("yota", "ALERT");
         Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
@@ -314,7 +303,6 @@ public class YotaCastService extends Service {
 
     public void hideAlert(){
         RemoteViews view = new RemoteViews(getPackageName(), R.layout.yotacast);
-        view.setTextViewText(R.id.alert, "Play Alert");
         view.setViewVisibility(R.id.alertText, View.INVISIBLE);
 
         // Push update for this widget to the home screen

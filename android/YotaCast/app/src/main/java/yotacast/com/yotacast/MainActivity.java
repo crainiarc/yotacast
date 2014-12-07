@@ -48,8 +48,8 @@ public class MainActivity extends Activity {
             updateService();
             finish();
             return;
-        } else if (action.equals(YotaCastWidget.ACTION_ALERT_CLICK)){
-            toggleAlert();
+        } else if (action.equals(YotaCastWidget.ACTION_ALARM_CLICK)){
+            toggleAlarm();
             finish();
             return;
         } else if (action.equals(YotaCastWidget.ACTION_PREV_CLICK)){
@@ -89,26 +89,23 @@ public class MainActivity extends Activity {
         }
     }
 
-    public void restartService(){
-        stopService(new Intent(this, YotaCastService.class));
-        startService(new Intent(this, YotaCastService.class));
-    }
 
 
-    public void toggleAlert(){
+    public void toggleAlarm(){
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        boolean alerted = prefs.getBoolean("alerted", false);
-        if (alerted)
-            hideAlert();
+        boolean alarmed = prefs.getBoolean("alarmed", false);
+        if (alarmed)
+            stopAlarm();
         else
-            showAlert();
+            startAlarm();
         SharedPreferences.Editor editor = prefs.edit();
-        editor.putBoolean("alerted", !alerted);
+        editor.putBoolean("alarmed", !alarmed);
         editor.commit();
     };
 
-    public void hideAlert(){
+    public void stopAlarm(){
         RemoteViews view = new RemoteViews(getPackageName(), R.layout.yotacast);
+        view.setTextViewText(R.id.alarm, "Play Alarm");
 
         // Push update for this widget to the home screen
         ComponentName thisWidget = new ComponentName(this, YotaCastWidget.class);
@@ -119,7 +116,14 @@ public class MainActivity extends Activity {
     }
 
 
-    public void showAlert(){
+    public void startAlarm(){
+        RemoteViews view = new RemoteViews(getPackageName(), R.layout.yotacast);
+        view.setTextViewText(R.id.alarm, "Stop Alarm");
+
+        // Push update for this widget to the home screen
+        ComponentName thisWidget = new ComponentName(this, YotaCastWidget.class);
+        AppWidgetManager manager = AppWidgetManager.getInstance(this);
+        manager.updateAppWidget(thisWidget, view);
 
         new AlertTask().execute();
     }

@@ -18,8 +18,8 @@ public class YotaCastWidget extends AppWidgetProvider {
     public static final String ACTION_UPDATE_CLICK =
             "yotacast.com.yotacast.action.UPDATE_CLICK";
 
-    public static final String ACTION_ALERT_CLICK =
-            "yotacast.com.yotacast.action.ALERT_CLICK";
+    public static final String ACTION_ALARM_CLICK =
+            "yotacast.com.yotacast.action.ACTION_ALARM_CLICK";
 
     public static final String ACTION_PREV_CLICK =
             "yotacast.com.yotacast.action.PREV_CLICK";
@@ -85,12 +85,12 @@ public class YotaCastWidget extends AppWidgetProvider {
         views.setOnClickPendingIntent(R.id.buttonBack, pendingIntentBack);
 
 
-        //  Hide alert
-        PendingIntent pendingIntentAlert;
-        Intent intentAlert = new Intent(context, MainActivity.class);
-        intentAlert.setAction(ACTION_ALERT_CLICK);
-        pendingIntentAlert =  PendingIntent.getActivity(context, 0, intentAlert, 0);
-        views.setOnClickPendingIntent(R.id.alert, pendingIntentAlert);
+        //   Toggle alert
+        PendingIntent pendingIntentAlarm;
+        Intent intentAlarm = new Intent(context, MainActivity.class);
+        intentAlarm.setAction(ACTION_ALARM_CLICK);
+        pendingIntentAlarm =  PendingIntent.getActivity(context, 0, intentAlarm, 0);
+        views.setOnClickPendingIntent(R.id.alarm, pendingIntentAlarm);
 
         // Instruct the widget manager to update the widget
         appWidgetManager.updateAppWidget(appWidgetId, views);
