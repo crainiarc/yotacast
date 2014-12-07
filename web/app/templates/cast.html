@@ -31,87 +31,77 @@
             <div class="row">
                 <div class="col-md-12">
                     <div role="tabpanel">
-                    <!-- Nav tabs -->
-                        <ul class="nav nav-tabs" role="tablist">
-                            <li role="presentation" class="active">
-                                <a href="#camera" aria-controls="plane" role="tab" data-toggle="tab">Camera</a>
-                            </li>
-                            <li role="presentation">
-                                <a href="#gallery" aria-controls="planview" role="tab" data-toggle="tab">Gallery</a>
-                            </li>
-                        </ul>
+                        <div class="panel panel-default main-section">
+                            <div class="panel-heading">
+                            <button class="pull-right btn [[ {'true': 'btn-success', 'false': 'btn-danger'}[!isCasting] ]] btn-sm" ng-click="togglePolling()"><span>[[ {'true': 'Start', 'false': 'Stop'}[!isCasting] ]]</span> Casting</button>
+                                <ul class="nav nav-tabs" role="tablist">
+                                    <li role="presentation" class="active">
+                                        <a href="#camera" aria-controls="plane" role="tab" data-toggle="tab">Camera</a>
+                                    </li>
+                                    <li role="presentation">
+                                        <a href="#gallery" aria-controls="planview" role="tab" data-toggle="tab">Gallery</a>
+                                    </li>
+                                </ul>
 
-                        <!-- Tab panes -->
-                        <div class="tab-content">
-                            <div role="tabpanel" class="tab-pane active" id="camera">
-                                <div class="panel panel-default main-section">
-                                    <div class="panel-heading">
-                                        <h3 class="panel-title">Camera</h3>
-                                    </div>
-                                    <div class="panel-body">
-                                        <div class="row">
-                                            <div class="col-md-9">
-                                                <video class="video-container"></video>
-                                                <canvas class="hidden-canvas"></canvas>                                            
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="panel panel-default">
-                                                    <div class="panel-heading">
-                                                        <h3 class="panel-title">YotaCast Settings</h3>
+                            </div>
+                            <div class="panel-body tab-content">
+                                <div role="tabpanel" class="tab-pane active" id="camera">
+                                    <div class="row">
+                                        <div class="col-md-9">
+                                            <video class="video-container"></video>
+                                            <canvas class="hidden-canvas"></canvas>                                            
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading">
+                                                    <h3 class="panel-title">YotaCast Settings</h3>
+                                                </div>
+                                                <div class="panel-body">
+                                                    <div class="form-group">
+                                                        <div>
+                                                            <label class="control-label">Mode: [[ mode | capitalize ]]</label>
+                                                        </div>
+                                                        <div class="btn-group" role="group">                        
+                                                            <button type="button" class="btn btn-default" ng-click="changeMode('burglar')">Burglar</button>
+                                                            <button type="button" class="btn btn-default" ng-click="changeMode('lullaby')">Lullaby</button>
+                                                        </div>
                                                     </div>
-                                                    <div class="panel-body">
-                                                        <div class="form-group">
-                                                            <div>
-                                                                <label class="control-label">Mode: [[ mode | capitalize ]]</label>
-                                                            </div>
-                                                            <div class="btn-group" role="group">                        
-                                                                <button type="button" class="btn btn-default" ng-click="changeMode('burglar')">Burglar</button>
-                                                                <button type="button" class="btn btn-default" ng-click="changeMode('lullaby')">Lullaby</button>
-                                                            </div>
+                                                    <div class="form-group">
+                                                        <label class="control-label">
+                                                            Update Interval: <span class="update-interval"> [[ timeoutInterval ]]s</span>
+                                                        </label>
+                                                        <div class="input-group">
+                                                            
                                                         </div>
-                                                        <div class="form-group">
-                                                            <label class="control-label">
-                                                                Update Interval: <span class="update-interval"> [[ timeoutInterval ]]s</span>
-                                                            </label>
-                                                            <div class="input-group">
-                                                                
-                                                            </div>
-                                                            <div id="slider"></div>
-                                                        </div>
-                                                        <div>
-                                                        <button class="btn [[ {'true': 'btn-success', 'false': 'btn-danger'}[!isCasting] ]]" ng-click="togglePolling()"><span>[[ {'true': 'Start', 'false': 'Stop'}[!isCasting] ]]</span> Casting</button>
-                                                        <!-- <button class="btn btn-default" ng-click="sendImage()">Send Current Image</button> -->
-                                                        <!-- <button class="btn btn-default" ng-click="getImage()">Get Image</button> -->
-                                                        </div>
-                                                        <br>
-                                                        <div>
-                                                        <button class="btn btn-warning" ng-click="activateAlert()">Activate alert</button>
-                                                        </div>
-                                                        <br>
-                                                        <div>
-                                                        <button class="btn btn-info" ng-click="stopAlert()">Stop alert</button>
-                                                        </div>
+                                                        <div id="slider"></div>
+                                                    </div>
+                                                    <div>
+                                                    <button class="btn [[ {'true': 'btn-success', 'false': 'btn-danger'}[!isCasting] ]]" ng-click="togglePolling()"><span>[[ {'true': 'Start', 'false': 'Stop'}[!isCasting] ]]</span> Casting</button>
+                                                    <!-- <button class="btn btn-default" ng-click="sendImage()">Send Current Image</button> -->
+                                                    <!-- <button class="btn btn-default" ng-click="getImage()">Get Image</button> -->
+                                                    </div>
+                                                    <br>
+                                                    <div>
+                                                    <button class="btn btn-warning" ng-click="activateAlert()">Activate alert</button>
+                                                    </div>
+                                                    <br>
+                                                    <div>
+                                                    <button class="btn btn-info" ng-click="stopAlert()">Stop alert</button>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div role="tabpanel" class="tab-pane" id="gallery">
-                                <div class="panel panel-default main-section">
-                                    <div class="panel-heading">
-                                        <h3 class="panel-title">Snapshots Gallery <button class="pull-right btn [[ {'true': 'btn-success', 'false': 'btn-danger'}[!isCasting] ]] btn-xs" ng-click="togglePolling()"><span>[[ {'true': 'Start', 'false': 'Stop'}[!isCasting] ]]</span> Casting</button></h3>
-                                    </div>
-                                    <div class="panel-body">
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <ul class="snapshots-gallery">
-                                                    <li ng-repeat="snapshot in snapshots" class="snapshot-listing [[ {'true': 'movement'}[snapshot.movement] ]]" ng-click="chooseImage(snapshot)">
-                                                        <img ng-src="/static/snapshots/[[snapshot.equalized_image]]">
-                                                    </li>
-                                                </ul>
-                                            </div>
+                                <div role="tabpanel" class="tab-pane" id="gallery">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            
+                                            <ul class="snapshots-gallery">
+                                                <li ng-repeat="snapshot in snapshots" class="snapshot-listing [[ {'true': 'movement'}[snapshot.movement] ]]" ng-click="chooseImage(snapshot)">
+                                                    <img ng-src="/static/snapshots/[[snapshot.equalized_image]]">
+                                                </li>
+                                            </ul>
                                         </div>
                                     </div>
                                 </div>
