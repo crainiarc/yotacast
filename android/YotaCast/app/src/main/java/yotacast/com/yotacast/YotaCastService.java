@@ -177,10 +177,28 @@ public class YotaCastService extends Service {
         if (ended)
             return;
 
+        RemoteViews view = new RemoteViews(getPackageName(), R.layout.yotacast);
+        view.setViewVisibility(R.id.alert, View.VISIBLE);
+
+        // Push update for this widget to the home screen
+        ComponentName thisWidget = new ComponentName(YotaCastService.this, YotaCastWidget.class);
+        AppWidgetManager manager = AppWidgetManager.getInstance(YotaCastService.this);
+        manager.updateAppWidget(thisWidget, view);
+
         Log.d("yota", "ALERT");
         Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         Ringtone r = RingtoneManager.getRingtone(getApplicationContext(), notification);
         r.play();
+    }
+
+    public void hideAlert(){
+        RemoteViews view = new RemoteViews(getPackageName(), R.layout.yotacast);
+        view.setViewVisibility(R.id.alert, View.INVISIBLE);
+
+        // Push update for this widget to the home screen
+        ComponentName thisWidget = new ComponentName(YotaCastService.this, YotaCastWidget.class);
+        AppWidgetManager manager = AppWidgetManager.getInstance(YotaCastService.this);
+        manager.updateAppWidget(thisWidget, view);
     }
 
 

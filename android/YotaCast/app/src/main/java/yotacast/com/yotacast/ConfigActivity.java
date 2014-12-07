@@ -1,6 +1,8 @@
 package yotacast.com.yotacast;
 
 import android.app.Activity;
+import android.appwidget.AppWidgetManager;
+import android.content.ComponentName;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -10,6 +12,7 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.RemoteViews;
 import android.widget.SeekBar;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -107,7 +110,6 @@ public class ConfigActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_config);
 
 
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
@@ -122,7 +124,19 @@ public class ConfigActivity extends Activity {
             updateService();
             finish();
             return;
+        } else if (action.equals(YotaCastWidget.ACTION_ALERT_CLICK)){
+            hideAlert();
+            finish();
+            return;
         }
+
+
+        //  Check action, if action, then exit
+        if (action != null && action.length() > 0){
+            finish();
+            return;
+        } else
+            setContentView(R.layout.activity_config);
 
     }
 
@@ -150,5 +164,17 @@ public class ConfigActivity extends Activity {
         stopService(new Intent(this, YotaCastService.class));
         startService(new Intent(this, YotaCastService.class));
     }
+
+
+    public void hideAlert(){
+        RemoteViews view = new RemoteViews(getPackageName(), R.layout.yotacast);
+        view.setViewVisibility(R.id.alert, View.INVISIBLE);
+
+        // Push update for this widget to the home screen
+        ComponentName thisWidget = new ComponentName(this, YotaCastWidget.class);
+        AppWidgetManager manager = AppWidgetManager.getInstance(this);
+        manager.updateAppWidget(thisWidget, view);
+    }
+
 
 }

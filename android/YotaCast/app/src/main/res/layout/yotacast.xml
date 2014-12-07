@@ -37,5 +37,20 @@
         android:layout_alignParentEnd="true"
         />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="ALERT"
+        android:id="@+id/alert"
+        android:layout_alignParentBottom="true"
+        android:layout_toStartOf="@+id/buttonPlay"
+        android:layout_alignParentStart="true"
+        android:layout_alignEnd="@+id/buttonPlay"
+        android:gravity="center"
+        android:background="#f00"
+        android:textAlignment="center"
+        android:visibility="invisible"/>
+
 
 </RelativeLayout>
