@@ -49,7 +49,10 @@ public class MainActivity extends Activity {
             finish();
             return;
         } else if (action.equals(YotaCastWidget.ACTION_ALARM_CLICK)){
-            toggleAlarm();
+            try {
+                toggleAlarm();
+            } catch (Exception ex) {
+            }
             finish();
             return;
         } else if (action.equals(YotaCastWidget.ACTION_PREV_CLICK)){
@@ -140,6 +143,7 @@ public class MainActivity extends Activity {
                 DefaultHttpClient httpClient = new DefaultHttpClient();
                 HttpPost httpPost = new HttpPost(endpoint);
                 HttpResponse httpResponse = httpClient.execute(httpPost);
+                finish();
             } catch (UnsupportedEncodingException e) {
                 e.printStackTrace();
             } catch (ClientProtocolException e) {
@@ -163,6 +167,7 @@ public class MainActivity extends Activity {
                 DefaultHttpClient httpClient = new DefaultHttpClient();
                 HttpPost httpPost = new HttpPost(endpoint);
                 HttpResponse httpResponse = httpClient.execute(httpPost);
+                finish();
             } catch (UnsupportedEncodingException e) {
                 e.printStackTrace();
             } catch (ClientProtocolException e) {
