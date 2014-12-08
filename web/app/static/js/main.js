@@ -26,7 +26,7 @@ function CameraController ($scope, $http, $interval) {
   audio.loop = true;
 
   $scope.snapshots = [];
-  $scope.movementThreshold = 5;
+  $scope.movementThreshold = 15;
   $scope.isCasting = false;
   $scope.timeoutInterval = 1;
 
@@ -66,7 +66,7 @@ function CameraController ($scope, $http, $interval) {
       navigator.mozGetUserMedia || navigator.msGetUserMedia);
 
     // Link the video tag to the WebCam User Media Stream
-    navigator.getMedia({video: true}, function(stream) {
+    navigator.getMedia({video: true}, function (stream) {
       if (navigator.mozGetUserMedia) {
         video.mozSrcObject = stream;
       } else {
