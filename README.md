@@ -1,6 +1,6 @@
 # YotaCast
 
-![img](images/logo.png =250x)
+![img](images/logo.png)
 
 This project was a submission to [Hackatron Asia 2014](http://hackatron.techinasia.com), which we subsequently won first place. Yotacast is now released open-source so that everyone can get a feel on how to make a YotaPhone app.
 
