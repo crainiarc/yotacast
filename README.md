@@ -31,7 +31,7 @@ Localized histogram equalization is carried out to enhance the quality of the im
 ![img](images/gallery-inspection.png)
 
 ## Team
-- Tay Yang Shun [(https://github.com/yangshun)](https://github.com/yangshun)
+- Yangshun Tay [(https://github.com/yangshun)](https://github.com/yangshun)
 - Chua Wei Kuan [(https://github.com/khankuan)](https://github.com/khankuan)
 - Lim Keng Kiat [(https://github.com/crainiarc)](https://github.com/crainiarc)
 - Chee Wai Hon [(https://github.com/imwaihon)](https://github.com/imwaihon)
